@@ -1,0 +1,16 @@
+.carousel-item {
+    position: relative;
+    display: inline-block;
+}
+
+.text {
+    font-weight: bold;
+    position: absolute;
+    z-index: 999;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    top: 40%;
+    width: 100%;
+    -webkit-text-stroke: 1px black;
+}

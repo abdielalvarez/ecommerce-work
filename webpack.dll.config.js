@@ -8,7 +8,9 @@ module.exports = {
         modules: [
             'react',
             'react-dom',
-            'react-router-dom'
+            'react-router-dom',
+            'bootstrap',
+            'style-loader'
         ]
     },
     optimization: {

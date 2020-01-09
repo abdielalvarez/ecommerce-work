@@ -13,7 +13,7 @@ module.exports = {
         chunkFilename: 'js/[id].[chunkhash].js'
     },
     resolve: {
-        extensions: ['.js', '.jsx'],
+        extensions: ['.js', '.jsx', '.css'],
     },
     devServer: {
         contentBase: path.resolve(__dirname, 'dist'),
