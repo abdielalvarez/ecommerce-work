@@ -1,0 +1,21 @@
+#footer {
+    background-color: #8C939D;
+    .row {
+        padding-top: 40px;
+        padding-bottom: 40px;
+        div {
+            h5, p {
+                color: white;
+            }
+            h5 {
+                margin-bottom: 30px;
+            }
+        }
+        .part2 .row {
+            padding-top: 90px;
+            .col {
+                color: white;
+            }
+        } 
+    }
+}

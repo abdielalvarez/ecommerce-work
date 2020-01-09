@@ -1,0 +1,25 @@
+.card-title {
+    margin-top: 4px;
+    color: #F74999;
+}
+
+.product {
+    margin-top: -6px;
+}
+
+.part-two {
+    display: flex;
+    padding: 10px;
+    padding-top: 0px;
+    justify-content: center;
+    a {
+       text-align: center;
+    }
+    div {
+        align-items: center;
+    }
+    div a {
+        color: #484242;
+        background-color: #A0EBF5;
+    }
+}

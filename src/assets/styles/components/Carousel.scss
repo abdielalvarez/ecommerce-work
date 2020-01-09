@@ -1,16 +1,20 @@
-.carousel-item {
+#carousel {
     position: relative;
-    display: inline-block;
 }
 
-.text {
-    font-weight: bold;
+#carousel .overlay {
     position: absolute;
-    z-index: 999;
-    margin: 0 auto;
+    top: 0;
+    bottom: 0;
     left: 0;
     right: 0;
-    top: 40%;
-    width: 100%;
+    font-weight: bold;
+    color: white;
     -webkit-text-stroke: 1px black;
+    z-index: 1;
+}
+
+#carousel .overlay .container,
+#carousel .overlay .row {
+    height: 100%;
 }
