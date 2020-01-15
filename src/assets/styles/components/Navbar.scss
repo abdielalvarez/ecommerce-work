@@ -1,5 +1,6 @@
 nav {
     background-color: #F74999;
+    display: inline-flex;
 }
 
 .nav-item div {
@@ -14,3 +15,10 @@ nav {
     background-color: #F74999;
     color: #A0EBF5;
 }
+
+@media screen and (min-width: 767.98px) {
+    .nav-item div a {
+        padding-left: 8px;
+    }
+}
+    

@@ -16,6 +16,7 @@ module.exports = {
         extensions: ['.js', '.jsx', '.css'],
     },
     devServer: {
+        historyApiFallback: true,
         contentBase: path.resolve(__dirname, 'dist'),
         open: 'google chrome',
         port: 9001,
