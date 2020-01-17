@@ -24,3 +24,56 @@ header {
     } 
 }
 
+// MODAL FOR LOGIN
+
+.modal-header {
+    font-family: 'Helvetica-Neue';
+    display: block !important;
+    text-align: center;
+    border-bottom: none !important;
+    padding-top: 30px !important;
+    padding-bottom: 0 !important;
+    .modal-title {
+        .container {
+            h3 {
+                margin-bottom: 0;
+                color: #484242;
+            }
+            small {
+                color: #484242;
+            }
+        }
+    }
+}
+
+.modal-body {
+    .container {
+        form {
+            .form-group {
+                #emailHelp {
+                    margin-top: 0;
+                }
+            }
+            #sign-in {
+                background-color: #F74999;
+                color: white;
+                font-weight: bold;
+                font-size: 17px;
+            }
+            #sign-google {
+                background-color: #DB4A39;
+                color: white;
+                font-weight: bold;
+                font-size: 17px;
+            }
+            #link-sign-up {
+                text-align: center;
+                a {
+                    text-decoration: none;
+                    color: #F74999;
+                }
+            }
+        }
+    }
+}
+

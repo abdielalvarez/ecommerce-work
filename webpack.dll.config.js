@@ -10,6 +10,8 @@ module.exports = {
             'react-dom',
             'react-router-dom',
             'bootstrap',
+            'reactstrap',
+            'sweetalert2',
             'style-loader'
         ]
     },

@@ -1,0 +1,25 @@
+{
+  "user": [
+    {
+      "name": "Baxter",
+      "lastName": "Bruinsma",
+      "email": "bbruinsma0@utexas.edu",
+      "password": "Llpkhb",
+      "id": 1
+    },
+    {
+      "name": "Perceval",
+      "lastName": "Lensch",
+      "email": "plensch1@answers.com",
+      "password": "Eq6fMla",
+      "id": 2
+    },
+    {
+      "name": "Hallsy",
+      "lastName": "Broschek",
+      "email": "hbroschek2@ibm.com",
+      "password": "gSsVKt",
+      "id": 3
+    }
+  ]
+}
