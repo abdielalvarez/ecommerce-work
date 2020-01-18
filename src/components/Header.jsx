@@ -76,7 +76,7 @@ class Header extends Component {
       }
       delete this.state.samePassword;
       axios.post(
-        'http://localhost:3000/user',
+        'http://localhost:3001/user',
         this.state,
       )
         .then((res) => {
@@ -105,13 +105,13 @@ class Header extends Component {
       delete this.state.signInIsOpen;
       delete this.state.signUpIsOpen;
       delete this.state.samePassword;
-      axios.get('http://localhost:3000/user')
+      axios.get('http://localhost:3001/user')
         .then((data) => {
           console.log(data);
           Swal.fire({
             icon: 'success',
             title: 'Excelente',
-            text: 'Has creado tu cuenta en la dataBase.json correctamente',
+            text: 'Has iniciado tu sesión exitosamente',
           });
         })
         .catch(() => {
@@ -145,9 +145,9 @@ class Header extends Component {
                   </Link>
                 </li>
                 <li className='nav-item user-item-container dropdown'>
-                  <Link className='nav-link' to='/' onClick={this.toggleOpenChat}>
+                  <a className='nav-link' href='#' onClick={this.toggleOpenChat}>
                     <img src={user} alt='userIcon' />
-                  </Link>
+                  </a>
                   <div className={`user-item dropdown-menu-right ${userIcon}`} aria-labelledby='navbarDropdown'>
                     <a className='item dropdown-item' onClick={this.toggleSignIn.bind(this)} href='#'>Iniciar Sesión</a>
                     <a className='item dropdown-item' onClick={this.toggleSignUp.bind(this)} href='#'>Registrarse</a>

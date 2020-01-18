@@ -8,6 +8,8 @@ module.exports = {
         modules: [
             'react',
             'react-dom',
+            'react-router',
+            'history',
             'react-router-dom',
             'bootstrap',
             'reactstrap',

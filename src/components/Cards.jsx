@@ -3,20 +3,18 @@ import candy from '../assets/static/candy.png';
 import blueCar from '../assets/static/blue-car.png';
 import '../assets/styles/components/Cards.scss';
 
-const Cards = (props) => {
+const Cards = ({ product }) => {
 
   const [count, setCount] = useState(0);
-
-  const { productName, productPrice } = props;
+  const { name, price, images } = product;
   return (
     <section>
       <div className='card'>
         <img src={candy} className='card-img-top' alt='candy' />
         <div className='part-one'>
-          <h5 className='card-title text-center'>{productName}</h5>
+          <h5 className='card-title text-center'>{name}</h5>
           <h6 className='product text-center'>
-                      $
-            {productPrice}
+            {price}
           </h6>
         </div>
         <div className='part-two'>

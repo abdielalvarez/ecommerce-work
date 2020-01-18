@@ -1,14 +1,19 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+import history from '../routes/history';
 import '../assets/styles/components/Navbar.scss';
 
 class Navbar extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       isOpenTypes: false,
       isOpenCharacters: false,
       isOpenDays: false,
+      search: '',
     };
+    this.handleChange = this.handleChange.bind(this);
   }
 
     toggleOpenTypes = () => {
@@ -41,8 +46,48 @@ class Navbar extends Component {
       }
     };
 
-    render() {
+    handleChange = (e) => {
+      this.setState({
+        search: e.target.value,
+      });
+    }
 
+    handleFilter = (paramater) => {
+      console.log(paramater);
+      axios.get(`http://localhost:3000/candy/?:${paramater}`, {
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+        },
+      })
+        .then((res) => {
+          const info = res.data;
+          // console.log(info);
+          const string = JSON.stringify(info);
+          if (!localStorage.getItem('categoryData')) {
+            localStorage.setItem('categoryData', string);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+
+    handleSearch = (e) => {
+      const { search } = this.state;
+      axios.get(`http://localhost:3000/candy/?:${search}`, {
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+        },
+      })
+        .then((res) => {
+          // console.log(res);
+          history.push('/filtered');
+        })
+        .catch((err) => console.log(err));
+      e.preventDefault();
+    }
+
+    render() {
       const menuClassTypes = `dropdown-menu${this.state.isOpenTypes ? ' show' : ''}`;
       const menuClassCharacters = `dropdown-menu${this.state.isOpenCharacters ? ' show' : ''}`;
       const menuClassDays = `dropdown-menu${this.state.isOpenDays ? ' show' : ''}`;
@@ -65,16 +110,16 @@ class Navbar extends Component {
                                 TIPOS
                 </a>
                 <div className={`dropdown-menu w-100 text-center text-md-left ${menuClassTypes}`} aria-labelledby='navbarDropdown'>
-                  <a className='dropdown-item' href='/'>Caramelos</a>
-                  <a className='dropdown-item' href='/'>Picantes</a>
-                  <a className='dropdown-item' href='/'>Chocolates</a>
-                  <a className='dropdown-item' href='/'>Chicles</a>
-                  <a className='dropdown-item' href='/'>Piñateros</a>
-                  <a className='dropdown-item' href='/'>Gomitas</a>
-                  <a className='dropdown-item' href='/'>Galletas</a>
-                  <a className='dropdown-item' href='/'>Helados</a>
-                  <a className='dropdown-item' href='/'>Paletas</a>
-                  <a className='dropdown-item' href='/'>Rellenos</a>
+                  <Link to='/filtered' onClick={this.handleFilter.bind(this, 'caramelos')} className='dropdown-item'>Caramelos</Link>
+                  <Link to='/filtered' onClick={this.handleFilter.bind(this, 'picantes')} className='dropdown-item'>Picantes</Link>
+                  <Link to='/filtered' onClick={this.handleFilter.bind(this, 'chocolates')} className='dropdown-item'>Chocolates</Link>
+                  <Link to='/filtered' onClick={this.handleFilter.bind(this, 'chicles')} className='dropdown-item'>Chicles</Link>
+                  <Link to='/filtered' onClick={this.handleFilter.bind(this, 'piñateros')} className='dropdown-item'>Piñateros</Link>
+                  <Link to='/filtered' onClick={this.handleFilter.bind(this, 'gomitas')} className='dropdown-item'>Gomitas</Link>
+                  <Link to='/filtered' onClick={this.handleFilter.bind(this, 'galletas')} className='dropdown-item'>Galletas</Link>
+                  <Link to='/filtered' onClick={this.handleFilter.bind(this, 'helados')} className='dropdown-item'>Helados</Link>
+                  <Link to='/filtered' onClick={this.handleFilter.bind(this, 'paletas')} className='dropdown-item'>Paletas</Link>
+                  <Link to='/filtered' onClick={this.handleFilter.bind(this, 'rellenos')} className='dropdown-item'>Rellenos</Link>
                 </div>
               </li>
 
@@ -94,11 +139,11 @@ class Navbar extends Component {
                   className={`dropdown-menu w-100 text-center text-md-left ${menuClassCharacters}`}
                   aria-labelledby='navbarDropdown'
                 >
-                  <a className='dropdown-item' href='/'>Barbie</a>
-                  <a className='dropdown-item' href='/'>The SpongeBob</a>
-                  <a className='dropdown-item' href='/'>The PowerRangers</a>
-                  <a className='dropdown-item' href='/'>My Little Pony</a>
-                  <a className='dropdown-item' href='/'>Toy Story</a>
+                  <Link to='/filtered' onClick={this.handleFilter.bind(this, 'barbie')} className='dropdown-item'>Barbie</Link>
+                  <Link to='/filtered' onClick={this.handleFilter.bind(this, 'spongeBob')} className='dropdown-item'>The SpongeBob</Link>
+                  <Link to='/filtered' onClick={this.handleFilter.bind(this, 'powerRangers')} className='dropdown-item'>The PowerRangers</Link>
+                  <Link to='/filtered' onClick={this.handleFilter.bind(this, 'myLittlePony')} className='dropdown-item'>My Little Pony</Link>
+                  <Link to='/filtered' onClick={this.handleFilter.bind(this, 'toyStory')} className='dropdown-item'>Toy Story</Link>
                 </div>
               </li>
 
@@ -119,18 +164,19 @@ class Navbar extends Component {
                   className={`dropdown-menu w-100 text-center text-md-left ${menuClassDays}`}
                   aria-labelledby='navbarDropdown'
                 >
-                  <a className='dropdown-item' href='/'>Días Festivos</a>
-                  <a className='dropdown-item' href='/'>Navidad y Año Nuevo</a>
-                  <a className='dropdown-item' href='/'>Día del niño</a>
-                  <a className='dropdown-item' href='/'>Día de muertos</a>
-                  <a className='dropdown-item' href='/'>Día de las madres</a>
+                  <Link to='/filtered' onClick={this.handleFilter.bind(this, 'cumpleanos')} className='dropdown-item'>Cumpleaños</Link>
+                  <Link to='/filtered' onClick={this.handleFilter.bind(this, 'navidad')} className='dropdown-item'>Navidad y Año Nuevo</Link>
+                  <Link to='/filtered' onClick={this.handleFilter.bind(this, 'diaDelNiño')} className='dropdown-item'>Día del niño</Link>
+                  <Link to='/filtered' onClick={this.handleFilter.bind(this, 'diaDeMuertos')} className='dropdown-item'>Día de muertos</Link>
+                  <Link to='/filtered' onClick={this.handleFilter.bind(this, 'diaDeLasMadres')} className='dropdown-item'>Día de las madres</Link>
                 </div>
               </li>
             </ul>
-            <form className='form-inline justify-content-center my-2 my-lg-0'>
+            <form onSubmit={this.handleSearch} className='form-inline justify-content-center my-2 my-lg-0'>
               <input
                 className='form-control col-10 col-md-7 mr-md-2 mb-2 mb-sm-3 mb-md-0 rounded-pill search'
                 type='search'
+                onChange={this.handleChange}
                 placeholder='Search'
                 aria-label='Search'
               />

@@ -1,0 +1,863 @@
+{
+    "candy": [{
+        "name": "Carbonated Water - Lemon Lime",
+        "images": [
+          {
+            "img": "http://dummyimage.com/188x121.png/dddddd/000000"
+          },
+          {
+            "img": "http://dummyimage.com/190x226.png/dddddd/000000"
+          },
+          {
+            "img": "http://dummyimage.com/211x174.png/5fa2dd/ffffff"
+          }
+        ],
+        "type": {
+          "caramelos": false,
+          "picantes": false,
+          "chocolates": false,
+          "chicles": false,
+          "piñateros": true,
+          "gomitas": false,
+          "galletas": false,
+          "helados": false,
+          "paletas": true,
+          "rellenos": false
+        },
+        "characters": {
+          "barbie": true,
+          "spongeBob": true,
+          "powerRangers": false,
+          "myLittlePony": true,
+          "toyStory": false
+        },
+        "publicHoliday": {
+          "cumpleanos": true,
+          "navidad": true,
+          "diaDelNino": true,
+          "diaDeMuertos": true,
+          "diaDeLasMadres": true
+        },
+        "price": "$5.03",
+        "stock": 53,
+        "description": "Removal of Traction Apparatus on Right Toe",
+        "id": 1
+      }, {
+        "name": "Chocolate - Milk, Callets",
+        "images": [
+          {
+            "img": "http://dummyimage.com/137x190.jpg/dddddd/000000"
+          },
+          {
+            "img": "http://dummyimage.com/138x206.jpg/dddddd/000000"
+          },
+          {
+            "img": "http://dummyimage.com/195x225.jpg/ff4444/ffffff"
+          }
+        ],
+        "type": {
+          "caramelos": true,
+          "picantes": false,
+          "chocolates": true,
+          "chicles": true,
+          "piñateros": false,
+          "gomitas": true,
+          "galletas": false,
+          "helados": false,
+          "paletas": true,
+          "rellenos": false
+        },
+        "characters": {
+          "barbie": true,
+          "spongeBob": false,
+          "powerRangers": true,
+          "myLittlePony": false,
+          "toyStory": true
+        },
+        "publicHoliday": {
+          "cumpleanos": true,
+          "navidad": false,
+          "diaDelNino": false,
+          "diaDeMuertos": true,
+          "diaDeLasMadres": true
+        },
+        "price": "$6.89",
+        "stock": 24,
+        "description": "Release Sacral Sympathetic Nerve, Percutaneous Endoscopic Approach",
+        "id": 2
+      }, {
+        "name": "Wine - Soave Folonari",
+        "images": [
+          {
+            "img": "http://dummyimage.com/143x171.jpg/dddddd/000000"
+          },
+          {
+            "img": "http://dummyimage.com/142x201.jpg/ff4444/ffffff"
+          },
+          {
+            "img": "http://dummyimage.com/216x230.png/cc0000/ffffff"
+          }
+        ],
+        "type": {
+          "caramelos": false,
+          "picantes": true,
+          "chocolates": false,
+          "chicles": false,
+          "piñateros": false,
+          "gomitas": false,
+          "galletas": true,
+          "helados": true,
+          "paletas": false,
+          "rellenos": false
+        },
+        "characters": {
+          "barbie": true,
+          "spongeBob": false,
+          "powerRangers": false,
+          "myLittlePony": false,
+          "toyStory": true
+        },
+        "publicHoliday": {
+          "cumpleanos": false,
+          "navidad": true,
+          "diaDelNino": true,
+          "diaDeMuertos": true,
+          "diaDeLasMadres": false
+        },
+        "price": "$7.53",
+        "stock": 53,
+        "description": "Release Buttock Skin, External Approach",
+        "id": 3
+      }, {
+        "name": "Pastry - French Mini Assorted",
+        "images": [
+          {
+            "img": "http://dummyimage.com/161x111.png/dddddd/000000"
+          },
+          {
+            "img": "http://dummyimage.com/242x140.png/5fa2dd/ffffff"
+          },
+          {
+            "img": "http://dummyimage.com/145x196.png/cc0000/ffffff"
+          }
+        ],
+        "type": {
+          "caramelos": true,
+          "picantes": true,
+          "chocolates": false,
+          "chicles": false,
+          "piñateros": true,
+          "gomitas": true,
+          "galletas": true,
+          "helados": false,
+          "paletas": true,
+          "rellenos": false
+        },
+        "characters": {
+          "barbie": true,
+          "spongeBob": false,
+          "powerRangers": true,
+          "myLittlePony": false,
+          "toyStory": true
+        },
+        "publicHoliday": {
+          "cumpleanos": false,
+          "navidad": false,
+          "diaDelNino": false,
+          "diaDeMuertos": true,
+          "diaDeLasMadres": false
+        },
+        "price": "$5.42",
+        "stock": 28,
+        "description": "Revision of Synthetic Substitute in Tracheobronchial Tree, Percutaneous Approach",
+        "id": 4
+      }, {
+        "name": "Samosa - Veg",
+        "images": [
+          {
+            "img": "http://dummyimage.com/196x184.bmp/dddddd/000000"
+          },
+          {
+            "img": "http://dummyimage.com/141x168.bmp/5fa2dd/ffffff"
+          },
+          {
+            "img": "http://dummyimage.com/103x221.bmp/5fa2dd/ffffff"
+          }
+        ],
+        "type": {
+          "caramelos": false,
+          "picantes": false,
+          "chocolates": false,
+          "chicles": true,
+          "piñateros": true,
+          "gomitas": false,
+          "galletas": false,
+          "helados": false,
+          "paletas": false,
+          "rellenos": false
+        },
+        "characters": {
+          "barbie": true,
+          "spongeBob": false,
+          "powerRangers": true,
+          "myLittlePony": false,
+          "toyStory": true
+        },
+        "publicHoliday": {
+          "cumpleanos": false,
+          "navidad": true,
+          "diaDelNino": true,
+          "diaDeMuertos": true,
+          "diaDeLasMadres": true
+        },
+        "price": "$3.59",
+        "stock": 40,
+        "description": "Drainage of Right Sclera, External Approach, Diagnostic",
+        "id": 5
+      }, {
+        "name": "Blouse / Shirt / Sweater",
+        "images": [
+          {
+            "img": "http://dummyimage.com/235x159.png/5fa2dd/ffffff"
+          },
+          {
+            "img": "http://dummyimage.com/212x171.jpg/ff4444/ffffff"
+          },
+          {
+            "img": "http://dummyimage.com/154x139.bmp/cc0000/ffffff"
+          }
+        ],
+        "type": {
+          "caramelos": true,
+          "picantes": false,
+          "chocolates": true,
+          "chicles": true,
+          "piñateros": false,
+          "gomitas": false,
+          "galletas": true,
+          "helados": true,
+          "paletas": true,
+          "rellenos": false
+        },
+        "characters": {
+          "barbie": false,
+          "spongeBob": false,
+          "powerRangers": false,
+          "myLittlePony": true,
+          "toyStory": false
+        },
+        "publicHoliday": {
+          "cumpleanos": false,
+          "navidad": true,
+          "diaDelNino": false,
+          "diaDeMuertos": false,
+          "diaDeLasMadres": true
+        },
+        "price": "$6.85",
+        "stock": 24,
+        "description": "Extirpation of Matter from Soft Palate, Percutaneous Approach",
+        "id": 6
+      }, {
+        "name": "Crab - Meat",
+        "images": [
+          {
+            "img": "http://dummyimage.com/109x170.png/ff4444/ffffff"
+          },
+          {
+            "img": "http://dummyimage.com/150x107.jpg/dddddd/000000"
+          },
+          {
+            "img": "http://dummyimage.com/148x146.png/ff4444/ffffff"
+          }
+        ],
+        "type": {
+          "caramelos": false,
+          "picantes": true,
+          "chocolates": true,
+          "chicles": true,
+          "piñateros": false,
+          "gomitas": true,
+          "galletas": true,
+          "helados": true,
+          "paletas": true,
+          "rellenos": false
+        },
+        "characters": {
+          "barbie": true,
+          "spongeBob": false,
+          "powerRangers": false,
+          "myLittlePony": true,
+          "toyStory": false
+        },
+        "publicHoliday": {
+          "cumpleanos": false,
+          "navidad": false,
+          "diaDelNino": true,
+          "diaDeMuertos": true,
+          "diaDeLasMadres": true
+        },
+        "price": "$7.68",
+        "stock": 34,
+        "description": "Restriction of Duodenum with Intraluminal Device, Via Natural or Artificial Opening Endoscopic",
+        "id": 7
+      }, {
+        "name": "Pepper - Red Chili",
+        "images": [
+          {
+            "img": "http://dummyimage.com/107x109.bmp/ff4444/ffffff"
+          },
+          {
+            "img": "http://dummyimage.com/190x175.png/cc0000/ffffff"
+          },
+          {
+            "img": "http://dummyimage.com/227x122.jpg/cc0000/ffffff"
+          }
+        ],
+        "type": {
+          "caramelos": true,
+          "picantes": true,
+          "chocolates": false,
+          "chicles": false,
+          "piñateros": true,
+          "gomitas": false,
+          "galletas": true,
+          "helados": true,
+          "paletas": true,
+          "rellenos": true
+        },
+        "characters": {
+          "barbie": true,
+          "spongeBob": true,
+          "powerRangers": false,
+          "myLittlePony": true,
+          "toyStory": false
+        },
+        "publicHoliday": {
+          "cumpleanos": false,
+          "navidad": false,
+          "diaDelNino": false,
+          "diaDeMuertos": true,
+          "diaDeLasMadres": true
+        },
+        "price": "$2.76",
+        "stock": 56,
+        "description": "Dilation of Duodenum with Intraluminal Device, Open Approach",
+        "id": 8
+      }, {
+        "name": "Bag - Regular Kraft 20 Lb",
+        "images": [
+          {
+            "img": "http://dummyimage.com/113x105.png/cc0000/ffffff"
+          },
+          {
+            "img": "http://dummyimage.com/104x229.jpg/ff4444/ffffff"
+          },
+          {
+            "img": "http://dummyimage.com/201x142.png/ff4444/ffffff"
+          }
+        ],
+        "type": {
+          "caramelos": true,
+          "picantes": true,
+          "chocolates": false,
+          "chicles": true,
+          "piñateros": true,
+          "gomitas": false,
+          "galletas": true,
+          "helados": true,
+          "paletas": false,
+          "rellenos": true
+        },
+        "characters": {
+          "barbie": false,
+          "spongeBob": false,
+          "powerRangers": false,
+          "myLittlePony": true,
+          "toyStory": true
+        },
+        "publicHoliday": {
+          "cumpleanos": true,
+          "navidad": true,
+          "diaDelNino": false,
+          "diaDeMuertos": false,
+          "diaDeLasMadres": true
+        },
+        "price": "$2.62",
+        "stock": 84,
+        "description": "Supplement Lumbosacral Joint with Autologous Tissue Substitute, Percutaneous Approach",
+        "id": 9
+      }, {
+        "name": "Puree - Raspberry",
+        "images": [
+          {
+            "img": "http://dummyimage.com/117x139.png/cc0000/ffffff"
+          },
+          {
+            "img": "http://dummyimage.com/118x169.bmp/5fa2dd/ffffff"
+          },
+          {
+            "img": "http://dummyimage.com/175x101.png/ff4444/ffffff"
+          }
+        ],
+        "type": {
+          "caramelos": false,
+          "picantes": false,
+          "chocolates": true,
+          "chicles": true,
+          "piñateros": true,
+          "gomitas": true,
+          "galletas": false,
+          "helados": false,
+          "paletas": true,
+          "rellenos": true
+        },
+        "characters": {
+          "barbie": false,
+          "spongeBob": false,
+          "powerRangers": true,
+          "myLittlePony": true,
+          "toyStory": true
+        },
+        "publicHoliday": {
+          "cumpleanos": false,
+          "navidad": false,
+          "diaDelNino": true,
+          "diaDeMuertos": true,
+          "diaDeLasMadres": true
+        },
+        "price": "$1.80",
+        "stock": 23,
+        "description": "Revision of Nonautologous Tissue Substitute in Hair, External Approach",
+        "id": 10
+      }, {
+        "name": "Sausage - Meat",
+        "images": [
+          {
+            "img": "http://dummyimage.com/167x131.bmp/cc0000/ffffff"
+          },
+          {
+            "img": "http://dummyimage.com/230x200.jpg/5fa2dd/ffffff"
+          },
+          {
+            "img": "http://dummyimage.com/243x188.bmp/dddddd/000000"
+          }
+        ],
+        "type": {
+          "caramelos": true,
+          "picantes": false,
+          "chocolates": true,
+          "chicles": false,
+          "piñateros": false,
+          "gomitas": false,
+          "galletas": true,
+          "helados": false,
+          "paletas": false,
+          "rellenos": false
+        },
+        "characters": {
+          "barbie": true,
+          "spongeBob": false,
+          "powerRangers": true,
+          "myLittlePony": true,
+          "toyStory": false
+        },
+        "publicHoliday": {
+          "cumpleanos": false,
+          "navidad": true,
+          "diaDelNino": true,
+          "diaDeMuertos": false,
+          "diaDeLasMadres": false
+        },
+        "price": "$2.18",
+        "stock": 49,
+        "description": "Transfer Pelvic Region Subcutaneous Tissue and Fascia with Skin, Subcutaneous Tissue and Fascia, Open Approach",
+        "id": 11
+      }, {
+        "name": "Cabbage Roll",
+        "images": [
+          {
+            "img": "http://dummyimage.com/249x164.jpg/dddddd/000000"
+          },
+          {
+            "img": "http://dummyimage.com/113x124.bmp/cc0000/ffffff"
+          },
+          {
+            "img": "http://dummyimage.com/162x147.png/5fa2dd/ffffff"
+          }
+        ],
+        "type": {
+          "caramelos": true,
+          "picantes": true,
+          "chocolates": false,
+          "chicles": true,
+          "piñateros": false,
+          "gomitas": true,
+          "galletas": false,
+          "helados": false,
+          "paletas": true,
+          "rellenos": true
+        },
+        "characters": {
+          "barbie": false,
+          "spongeBob": false,
+          "powerRangers": true,
+          "myLittlePony": false,
+          "toyStory": false
+        },
+        "publicHoliday": {
+          "cumpleanos": true,
+          "navidad": true,
+          "diaDelNino": true,
+          "diaDeMuertos": false,
+          "diaDeLasMadres": false
+        },
+        "price": "$3.40",
+        "stock": 68,
+        "description": "Destruction of Left Renal Vein, Percutaneous Approach",
+        "id": 12
+      }, {
+        "name": "Oil - Margarine",
+        "images": [
+          {
+            "img": "http://dummyimage.com/190x225.png/ff4444/ffffff"
+          },
+          {
+            "img": "http://dummyimage.com/149x181.jpg/ff4444/ffffff"
+          },
+          {
+            "img": "http://dummyimage.com/125x217.png/cc0000/ffffff"
+          }
+        ],
+        "type": {
+          "caramelos": true,
+          "picantes": true,
+          "chocolates": true,
+          "chicles": false,
+          "piñateros": false,
+          "gomitas": false,
+          "galletas": true,
+          "helados": true,
+          "paletas": true,
+          "rellenos": false
+        },
+        "characters": {
+          "barbie": true,
+          "spongeBob": true,
+          "powerRangers": true,
+          "myLittlePony": true,
+          "toyStory": true
+        },
+        "publicHoliday": {
+          "cumpleanos": false,
+          "navidad": true,
+          "diaDelNino": true,
+          "diaDeMuertos": true,
+          "diaDeLasMadres": true
+        },
+        "price": "$8.81",
+        "stock": 23,
+        "description": "Reposition Right Temporomandibular Joint with Internal Fixation Device, Percutaneous Endoscopic Approach",
+        "id": 13
+      }, {
+        "name": "Tea - Herbal Sweet Dreams",
+        "images": [
+          {
+            "img": "http://dummyimage.com/199x108.bmp/cc0000/ffffff"
+          },
+          {
+            "img": "http://dummyimage.com/166x102.png/ff4444/ffffff"
+          },
+          {
+            "img": "http://dummyimage.com/218x191.bmp/5fa2dd/ffffff"
+          }
+        ],
+        "type": {
+          "caramelos": true,
+          "picantes": true,
+          "chocolates": false,
+          "chicles": true,
+          "piñateros": false,
+          "gomitas": false,
+          "galletas": true,
+          "helados": true,
+          "paletas": true,
+          "rellenos": false
+        },
+        "characters": {
+          "barbie": true,
+          "spongeBob": true,
+          "powerRangers": true,
+          "myLittlePony": true,
+          "toyStory": true
+        },
+        "publicHoliday": {
+          "cumpleanos": false,
+          "navidad": true,
+          "diaDelNino": true,
+          "diaDeMuertos": true,
+          "diaDeLasMadres": true
+        },
+        "price": "$1.28",
+        "stock": 18,
+        "description": "Traction of Right Lower Extremity using Traction Apparatus",
+        "id": 14
+      }, {
+        "name": "Yogurt - Raspberry, 175 Gr",
+        "images": [
+          {
+            "img": "http://dummyimage.com/229x121.png/ff4444/ffffff"
+          },
+          {
+            "img": "http://dummyimage.com/188x239.bmp/ff4444/ffffff"
+          },
+          {
+            "img": "http://dummyimage.com/174x164.png/ff4444/ffffff"
+          }
+        ],
+        "type": {
+          "caramelos": true,
+          "picantes": true,
+          "chocolates": true,
+          "chicles": true,
+          "piñateros": false,
+          "gomitas": false,
+          "galletas": true,
+          "helados": true,
+          "paletas": true,
+          "rellenos": false
+        },
+        "characters": {
+          "barbie": true,
+          "spongeBob": true,
+          "powerRangers": true,
+          "myLittlePony": false,
+          "toyStory": true
+        },
+        "publicHoliday": {
+          "cumpleanos": false,
+          "navidad": false,
+          "diaDelNino": true,
+          "diaDeMuertos": false,
+          "diaDeLasMadres": false
+        },
+        "price": "$8.84",
+        "stock": 49,
+        "description": "Supplement Lower Vein with Nonautologous Tissue Substitute, Percutaneous Endoscopic Approach",
+        "id": 15
+      }, {
+        "name": "Trueblue - Blueberry Cranberry",
+        "images": [
+          {
+            "img": "http://dummyimage.com/109x142.bmp/cc0000/ffffff"
+          },
+          {
+            "img": "http://dummyimage.com/103x244.bmp/ff4444/ffffff"
+          },
+          {
+            "img": "http://dummyimage.com/130x147.jpg/5fa2dd/ffffff"
+          }
+        ],
+        "type": {
+          "caramelos": false,
+          "picantes": true,
+          "chocolates": true,
+          "chicles": false,
+          "piñateros": false,
+          "gomitas": false,
+          "galletas": true,
+          "helados": false,
+          "paletas": true,
+          "rellenos": true
+        },
+        "characters": {
+          "barbie": true,
+          "spongeBob": true,
+          "powerRangers": true,
+          "myLittlePony": true,
+          "toyStory": true
+        },
+        "publicHoliday": {
+          "cumpleanos": true,
+          "navidad": false,
+          "diaDelNino": true,
+          "diaDeMuertos": false,
+          "diaDeLasMadres": false
+        },
+        "price": "$1.62",
+        "stock": 60,
+        "description": "Release Duodenum, Via Natural or Artificial Opening",
+        "id": 16
+      }, {
+        "name": "Cake - Mini Cheesecake",
+        "images": [
+          {
+            "img": "http://dummyimage.com/227x113.bmp/cc0000/ffffff"
+          },
+          {
+            "img": "http://dummyimage.com/147x177.png/ff4444/ffffff"
+          },
+          {
+            "img": "http://dummyimage.com/203x230.png/dddddd/000000"
+          }
+        ],
+        "type": {
+          "caramelos": true,
+          "picantes": false,
+          "chocolates": true,
+          "chicles": false,
+          "piñateros": true,
+          "gomitas": false,
+          "galletas": false,
+          "helados": false,
+          "paletas": false,
+          "rellenos": true
+        },
+        "characters": {
+          "barbie": false,
+          "spongeBob": true,
+          "powerRangers": false,
+          "myLittlePony": true,
+          "toyStory": false
+        },
+        "publicHoliday": {
+          "cumpleanos": false,
+          "navidad": true,
+          "diaDelNino": false,
+          "diaDeMuertos": false,
+          "diaDeLasMadres": true
+        },
+        "price": "$7.76",
+        "stock": 16,
+        "description": "Drainage of Right Shoulder Muscle, Percutaneous Approach, Diagnostic",
+        "id": 17
+      }, {
+        "name": "Cocoa Butter",
+        "images": [
+          {
+            "img": "http://dummyimage.com/247x158.jpg/cc0000/ffffff"
+          },
+          {
+            "img": "http://dummyimage.com/243x206.png/5fa2dd/ffffff"
+          },
+          {
+            "img": "http://dummyimage.com/191x158.bmp/ff4444/ffffff"
+          }
+        ],
+        "type": {
+          "caramelos": true,
+          "picantes": false,
+          "chocolates": true,
+          "chicles": true,
+          "piñateros": false,
+          "gomitas": true,
+          "galletas": false,
+          "helados": false,
+          "paletas": true,
+          "rellenos": true
+        },
+        "characters": {
+          "barbie": false,
+          "spongeBob": true,
+          "powerRangers": true,
+          "myLittlePony": false,
+          "toyStory": true
+        },
+        "publicHoliday": {
+          "cumpleanos": true,
+          "navidad": false,
+          "diaDelNino": true,
+          "diaDeMuertos": true,
+          "diaDeLasMadres": true
+        },
+        "price": "$9.34",
+        "stock": 77,
+        "description": "Excision of Left Lung, Open Approach, Diagnostic",
+        "id": 18
+      }, {
+        "name": "Carbonated Water - White Grape",
+        "images": [
+          {
+            "img": "http://dummyimage.com/200x140.jpg/dddddd/000000"
+          },
+          {
+            "img": "http://dummyimage.com/205x142.png/ff4444/ffffff"
+          },
+          {
+            "img": "http://dummyimage.com/155x190.png/ff4444/ffffff"
+          }
+        ],
+        "type": {
+          "caramelos": false,
+          "picantes": false,
+          "chocolates": false,
+          "chicles": true,
+          "piñateros": true,
+          "gomitas": true,
+          "galletas": false,
+          "helados": true,
+          "paletas": true,
+          "rellenos": false
+        },
+        "characters": {
+          "barbie": true,
+          "spongeBob": true,
+          "powerRangers": false,
+          "myLittlePony": false,
+          "toyStory": false
+        },
+        "publicHoliday": {
+          "cumpleanos": true,
+          "navidad": true,
+          "diaDelNino": true,
+          "diaDeMuertos": true,
+          "diaDeLasMadres": true
+        },
+        "price": "$4.68",
+        "stock": 7,
+        "description": "Drainage of Left Middle Ear, Open Approach",
+        "id": 19
+      }, {
+        "name": "Mushroom - White Button",
+        "images": [
+          {
+            "img": "http://dummyimage.com/192x152.png/5fa2dd/ffffff"
+          },
+          {
+            "img": "http://dummyimage.com/161x232.bmp/ff4444/ffffff"
+          },
+          {
+            "img": "http://dummyimage.com/153x172.bmp/ff4444/ffffff"
+          }
+        ],
+        "type": {
+          "caramelos": false,
+          "picantes": true,
+          "chocolates": false,
+          "chicles": true,
+          "piñateros": true,
+          "gomitas": false,
+          "galletas": true,
+          "helados": true,
+          "paletas": true,
+          "rellenos": true
+        },
+        "characters": {
+          "barbie": true,
+          "spongeBob": true,
+          "powerRangers": false,
+          "myLittlePony": true,
+          "toyStory": false
+        },
+        "publicHoliday": {
+          "cumpleanos": false,
+          "navidad": false,
+          "diaDelNino": false,
+          "diaDeMuertos": false,
+          "diaDeLasMadres": true
+        },
+        "price": "$1.07",
+        "stock": 85,
+        "description": "Revision of Autologous Tissue Substitute in Scrotum and Tunica Vaginalis, Percutaneous Approach",
+        "id": 20
+      }]
+}

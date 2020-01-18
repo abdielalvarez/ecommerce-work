@@ -6,7 +6,9 @@
   "scripts": {
     "start": "webpack-dev-server --config ./webpack.dev.config.js",
     "build:dll": "webpack --config ./webpack.dll.config.js --mode production",
-    "build": "webpack --config ./webpack.config.js --mode production"
+    "build": "webpack --config ./webpack.config.js --mode production",
+    "userBase": "json-server --watch ./dataBase.json --port 3001",
+    "candyBase": "json-server --watch ./dataCandy.json --port 3000"
   },
   "repository": {
     "type": "git",
@@ -22,6 +24,7 @@
   "dependencies": {
     "axios": "^0.19.1",
     "bootstrap": "^4.4.1",
+    "history": "^4.10.1",
     "jquery": "^3.4.1",
     "json-server": "^0.15.1",
     "popper.js": "^1.16.0",
@@ -50,6 +53,7 @@
     "file-loader": "^5.0.2",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
+    "loglevel": "^1.6.6",
     "mini-css-extract-plugin": "^0.9.0",
     "node-sass": "^4.13.0",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
