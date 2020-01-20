@@ -1,0 +1,56 @@
+.makeCenter {
+    margin: auto;
+    margin-left: 0;
+}
+
+.color {
+    color: #484242;
+}
+
+// THIS WORKS FOR BACK AND FORWARD
+
+.makeDistance {
+    margin-top: 60px;
+    margin-bottom: 20px;
+}
+
+.back {
+    background-color: #A0EBF5;
+    border: 0.5px solid #EBEBEB;
+}
+
+.buy {
+    display: flex;
+}
+
+.forward {
+    background-color: #F74999;
+    border: 0.5px solid #EBEBEB;
+    color: white;
+    width: 200px;
+    padding-bottom: 12px;
+    padding-top: 12px;
+    margin: auto;
+}
+
+// MODAL FOR CREATE ADDRESS ALIAS
+
+.modalTitle {
+    color: #F74999 !important;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.makeBigger {
+    max-height: auto;
+    width: 100%
+}
+
+.buttonColor {
+    background-color: #F74999;
+    padding: 15px;
+}
+
+.titleColor {
+    color: black;
+}

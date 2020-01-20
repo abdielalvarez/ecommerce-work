@@ -45,13 +45,16 @@ class Filtered extends Component {
     const { products, error } = this.state;
     if (error) {
       return (
-        <div className='container'>
-          <h4 className='suggestions text-center mt-2'>
-            Lo sentimos, por el momento no tenemos servicio para mostrarte los productos filtrados
-            <br />
-            Le invitamos a intentarlo más tarde
-          </h4>
-        </div>
+        <>
+          <Navbar />
+          <div className='container'>
+            <h4 className='suggestions text-center mt-2'>
+              Lo sentimos, por el momento no tenemos servicio para mostrarte los productos filtrados
+              <br />
+              Le invitamos a intentarlo más tarde
+            </h4>
+          </div>
+        </>
       );
     }
     return (

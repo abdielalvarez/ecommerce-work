@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Cards from './Cards';
 import '../assets/styles/components/Suggestions.scss';
+import { Link } from 'react-router-dom';
 
 class Suggestions extends Component {
 

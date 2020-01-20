@@ -20,6 +20,27 @@
       "email": "hbroschek2@ibm.com",
       "password": "gSsVKt",
       "id": 3
+    },
+    {
+      "name": "Abdiel",
+      "lastName": "Rojas",
+      "email": "abdy4lvarez@gmail.com",
+      "password": "s",
+      "id": 4
+    },
+    {
+      "name": "Abdiel",
+      "lastName": "Rojas",
+      "email": "abdy4lvarez@gmail.com",
+      "password": "q",
+      "id": 5
+    },
+    {
+      "name": "Abdiel",
+      "lastName": "Rojas",
+      "email": "abdy4lvarez@gmail.com",
+      "password": "w",
+      "id": 6
     }
   ]
 }

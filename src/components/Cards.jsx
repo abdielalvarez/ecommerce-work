@@ -1,18 +1,42 @@
 import React, { useState } from 'react';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
+import history from '../routes/history';
+import Counter from './Counter';
 import candy from '../assets/static/candy.png';
 import blueCar from '../assets/static/blue-car.png';
 import '../assets/styles/components/Cards.scss';
 
 const Cards = ({ product }) => {
 
-  const [count, setCount] = useState(0);
-  const { name, price, images } = product;
+  const { name, price, id, images } = product;
+  const handleSubmit = (e) => {
+    axios.get(`http://localhost:3000/candy/?:${id}`, {
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+      },
+    })
+      .then((res) => {
+        const info = res.data[0];
+        console.log(info);
+        const string = JSON.stringify(info);
+        localStorage.setItem('productForDescription', string);
+        history.push('/productDescription');
+      })
+      .catch((err) => console.log(err));
+    e.preventDefault();
+  };
+
   return (
     <section>
       <div className='card'>
-        <img src={candy} className='card-img-top' alt='candy' />
+        <Link onClick={handleSubmit} to='/productDescription'>
+          <img src={candy} className='card-img-top' alt='candy' />
+        </Link>
         <div className='part-one'>
-          <h5 className='card-title text-center'>{name}</h5>
+          <Link onClick={handleSubmit} to='/productDescription'>
+            <h5 className='card-title text-center'>{name}</h5>
+          </Link>
           <h6 className='product text-center'>
             {price}
           </h6>
@@ -21,21 +45,13 @@ const Cards = ({ product }) => {
           <a className='col-xl-6 card-link blue-car'>
             <img src={blueCar} alt='car' />
           </a>
-          <div className='col-xl-6 d-flex'>
-            <a className='counter col-xl-2' onClick={() => { if (count === 0) { return count ; } setCount(count - 1) }}>-</a>
-            <input
-              name='count'
-              type='text'
-              className='counter col-xl-8 pt-0 pb-0 pl-0 pr-0 text-center'
-              value={count}
-            />
-            <a className='counter col-xl-2' onClick={() => { setCount(count + 1) }}>+</a>
+          <div className='col-xl-6'>
+            <Counter />
           </div>
         </div>
       </div>
     </section>
   );
-
 };
 
 export default Cards;

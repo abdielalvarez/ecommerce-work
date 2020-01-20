@@ -25,7 +25,7 @@ class Header extends Component {
       samePassword: '',
     };
 
-    this.registerHandleChange = this.registerHandleChange.bind(this);
+    this.handleChange = this.handleChange.bind(this);
     this.registerHandleSubmit = this.registerHandleSubmit.bind(this);
   }
 
@@ -51,7 +51,7 @@ class Header extends Component {
       });
     }
 
-    registerHandleChange = (e) => {
+    handleChange = (e) => {
       this.setState({
         [e.target.name]: e.target.value,
       });
@@ -61,6 +61,7 @@ class Header extends Component {
       delete this.state.isOpenUserIcon;
       delete this.state.signInIsOpen;
       delete this.state.signUpIsOpen;
+      console.log(this.state);
       if (this.state.password !== this.state.samePassword) {
         e.preventDefault();
         throw new Error(
@@ -75,8 +76,9 @@ class Header extends Component {
         );
       }
       delete this.state.samePassword;
+      const { name, lastName, email, password } = this.state;
       axios.post(
-        'http://localhost:3001/user',
+        `http://localhost:3001/user/?:${name}/?:${lastName}/?:${email}/?:${password}`,
         this.state,
       )
         .then((res) => {
@@ -105,7 +107,8 @@ class Header extends Component {
       delete this.state.signInIsOpen;
       delete this.state.signUpIsOpen;
       delete this.state.samePassword;
-      axios.get('http://localhost:3001/user')
+      const { email, password } = this.state;
+      axios.get(`http://localhost:3001/user/?:${email}/?:${password}`)
         .then((data) => {
           console.log(data);
           Swal.fire({
@@ -140,7 +143,7 @@ class Header extends Component {
                   </Link>
                 </li>
                 <li className='nav-item'>
-                  <Link className='nav-link' to='/'>
+                  <Link className='nav-link' to='/shoppingCart'>
                     <img src={car} alt='shoppingCar' />
                   </Link>
                 </li>
@@ -175,11 +178,12 @@ class Header extends Component {
                     <input
                       name='email'
                       type='email'
-                      onChange={this.registerHandleChange}
+                      onChange={this.handleChange}
                       className='form-control'
                       id='inputEmail1'
                       aria-describedby='emailHelp'
                       placeholder='Correo Electrónico'
+                      required
                     />
                     <small id='emailHelp' className='form-text text-muted'>Nunca compartiremos su email a otro usuario</small>
                   </div>
@@ -187,10 +191,11 @@ class Header extends Component {
                     <input
                       name='password'
                       type='password'
-                      onChange={this.registerHandleChange}
+                      onChange={this.handleChange}
                       className='form-control'
                       id='inputPassword1'
                       placeholder='Contraseña'
+                      required
                     />
                   </div>
                   <button
@@ -224,7 +229,7 @@ class Header extends Component {
                     <input
                       type='text'
                       name='name'
-                      onChange={this.registerHandleChange}
+                      onChange={this.handleChange}
                       className='form-control'
                       aria-describedby='emailHelp'
                       placeholder='Nombre'
@@ -235,7 +240,7 @@ class Header extends Component {
                     <input
                       type='text'
                       name='lastName'
-                      onChange={this.registerHandleChange}
+                      onChange={this.handleChange}
                       className='form-control'
                       aria-describedby='emailHelp'
                       placeholder='Apellido Paterno'
@@ -246,7 +251,7 @@ class Header extends Component {
                     <input
                       type='email'
                       name='email'
-                      onChange={this.registerHandleChange}
+                      onChange={this.handleChange}
                       className='form-control'
                       placeholder='Correo Electrónico'
                       required
@@ -256,7 +261,7 @@ class Header extends Component {
                     <input
                       type='password'
                       name='password'
-                      onChange={this.registerHandleChange}
+                      onChange={this.handleChange}
                       className='form-control'
                       placeholder='Contraseña'
                       required
@@ -266,7 +271,7 @@ class Header extends Component {
                     <input
                       type='password'
                       name='samePassword'
-                      onChange={this.registerHandleChange}
+                      onChange={this.handleChange}
                       className='form-control'
                       placeholder='Confirmar contraseña'
                       required

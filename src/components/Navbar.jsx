@@ -53,7 +53,31 @@ class Navbar extends Component {
     }
 
     handleFilter = (paramater) => {
-      console.log(paramater);
+      // CHECAR HANDLE FILTER Y HANDLESEARCH SI ES CORRECTA A LÓGICA AL HABER TERMINADO EL BACKEND
+
+      // if (!localStorage.getItem('categoryData')) {
+      //   axios.get(`http://localhost:3000/candy/?:${paramater}`, {
+      //     headers: {
+      //       'Access-Control-Allow-Origin': '*',
+      //     },
+      //   })
+      //     .then((res) => {
+      //       const info = res.data;
+      //       const string = JSON.stringify(info);
+      //       localStorage.setItem('categoryData', string);
+      //     })
+      //     .catch((err) => {
+      //       this.setState({
+      //         error: err,
+      //       });
+      //     });
+      // } else {
+      //   const local = localStorage.getItem('categoryData');
+      //   const parsed = JSON.parse(local);
+      //   this.setState({
+      //     products: parsed,
+      //   });
+      // }
       axios.get(`http://localhost:3000/candy/?:${paramater}`, {
         headers: {
           'Access-Control-Allow-Origin': '*',

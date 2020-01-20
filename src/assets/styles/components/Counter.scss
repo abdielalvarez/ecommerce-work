@@ -1,0 +1,15 @@
+.counter {
+    color: #484242;
+    background-color: #A0EBF5;
+    padding-left: 1px;
+    padding-right: 1px;
+    cursor: pointer;
+    :hover & {
+        text-decoration: none;
+    }
+}
+
+input {
+    border: 0.05px solid #EBEBEB;
+    z-index: 0;
+}
