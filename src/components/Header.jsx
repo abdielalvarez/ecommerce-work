@@ -76,9 +76,8 @@ class Header extends Component {
         );
       }
       delete this.state.samePassword;
-      const { name, lastName, email, password } = this.state;
       axios.post(
-        `http://localhost:3001/user/?:${name}/?:${lastName}/?:${email}/?:${password}`,
+        'http://localhost:3000/api/auth/sign-up',
         this.state,
       )
         .then((res) => {
@@ -86,7 +85,7 @@ class Header extends Component {
           Swal.fire({
             icon: 'success',
             title: 'Excelente',
-            text: `${res.data.name}, has creado exitosamente tu cuenta de Beauty Box`,
+            text: `${res.data.data.data.name}, has creado exitosamente tu cuenta de Beauty Box`,
           });
         })
         .catch(() => {
@@ -103,12 +102,25 @@ class Header extends Component {
     }
 
     loginHandleSubmit = (e) => {
+      delete this.state.name;
+      delete this.state.lastName;
       delete this.state.isOpenUserIcon;
       delete this.state.signInIsOpen;
       delete this.state.signUpIsOpen;
       delete this.state.samePassword;
-      const { email, password } = this.state;
-      axios.get(`http://localhost:3001/user/?:${email}/?:${password}`)
+      this.state['apiKeyToken'] = '66de985b5718ba69226b041c28bcf706964756db41a98640da6c838e7043aba3';
+      const { email, password, apiKeyToken } = this.state;
+      const token = Buffer.from(`${email}:${password}`, 'utf-8').toString('base64');
+      axios({
+        method: 'post',
+        url: 'http://localhost:3000/api/auth/sign-in',
+        data: {
+          apiKeyToken,
+        },
+        headers: {
+          'Authorization': `basic ${token}`,
+        },
+      })
         .then((data) => {
           console.log(data);
           Swal.fire({
@@ -163,8 +175,8 @@ class Header extends Component {
 
           {/* MODAL FOR LOGIN */}
 
-          <Modal isOpen={this.state.signInIsOpen} toggle={this.toggleSignIn.bind(this)}>
-          {/* <Modal isOpen='true' toggle={this.toggleSignIn.bind(this)}> */}
+          {/* <Modal isOpen={this.state.signInIsOpen} toggle={this.toggleSignIn.bind(this)}> */}
+          <Modal isOpen='true' toggle={this.toggleSignIn.bind(this)}>
             <ModalHeader toggle={this.toggleSignIn.bind(this)}>
               <div className='container'>
                 <h3>Inicia sesión</h3>
