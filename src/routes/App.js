@@ -13,8 +13,8 @@ import Right from '../containers/Right';
 
 class App extends Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       isOpenUserIcon: false,
     };
@@ -22,8 +22,9 @@ class App extends Component {
 
   render() {
     const { isOpenUserIcon } = this.state;
+    // console.log(this.props);
     return (
-      <BrowserRouter>
+      <BrowserRouter forceRefresh={true}>
         <Router history={history}>
           <Layout isOpenUserIcon={isOpenUserIcon}>
             <Switch>

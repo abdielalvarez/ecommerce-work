@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-// import { Link } from 'react-router-dom';
 import Cards from './Cards';
 import '../assets/styles/components/Suggestions.scss';
 
@@ -15,31 +14,24 @@ class Suggestions extends Component {
   }
 
   componentDidMount() {
-    if (!localStorage.getItem('categoryData')) {
-      axios.get('http://localhost:3000/api/candies', {
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-        },
-      })
-        .then((res) => {
-          this.setState({
-            products: res.data.data,
-          });
-          const string = JSON.stringify(this.state.products);
-          localStorage.setItem('categoryData', string);
-        })
-        .catch((err) => {
-          this.setState({
-            error: err,
-          });
+    localStorage.removeItem('candyDataBase');
+    axios.get('http://localhost:3000/api/candies', {
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+      },
+    })
+      .then((res) => {
+        this.setState({
+          products: res.data.data,
         });
-    } else {
-      const local = localStorage.getItem('categoryData');
-      const parsed = JSON.parse(local);
-      this.setState({
-        products: parsed,
+        const string = JSON.stringify(this.state.products);
+        localStorage.setItem('candyDataBase', string);
+      })
+      .catch((err) => {
+        this.setState({
+          error: err,
+        });
       });
-    }
   }
 
   render() {

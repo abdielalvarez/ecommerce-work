@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import Cards from '../components/Cards';
 import Navbar from '../components/Navbar';
 
@@ -14,71 +14,49 @@ class Filtered extends Component {
   }
 
   componentDidMount() {
-    if (!localStorage.getItem('categoryData')) {
-      axios.get('http://localhost:3000/candy', {
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-        },
-      })
-        .then((res) => {
-          this.setState({
-            products: res.data,
-          });
-          const string = JSON.stringify(this.state.products);
-          localStorage.setItem('categoryData', string);
-        })
-        .catch((err) => {
-          this.setState({
-            error: err,
-          });
-        });
-    } else {
-      const local = localStorage.getItem('categoryData');
+    if (localStorage.getItem('candyDataBase')) {
+      const local = localStorage.getItem('candyDataBase');
       const parsed = JSON.parse(local);
       this.setState({
         products: parsed,
+      });
+    } else {
+      this.setState({
+        error: true,
       });
     }
   }
 
   render() {
-    const { products, error } = this.state;
-    if (error) {
-      return (
-        <>
-          <Navbar />
-          <div className='container'>
-            <h4 className='suggestions text-center mt-2'>
-              Lo sentimos, por el momento no tenemos servicio para mostrarte los productos filtrados
-              <br />
-              Le invitamos a intentarlo más tarde
-            </h4>
-          </div>
-        </>
-      );
-    }
+    const { products } = this.state;
     return (
       <>
         <Navbar />
         <section id='section' className='mt-4 mb-4'>
-          <div className='container-fluid'>
-            <div className='row'>
-              <div className='col-12'>
-                <h4 className='suggestions'>Filtrados por categoría, tipo o día festivo</h4>
+          {products.length === 0 ? (
+            <div className='container-fluid'>
+              <h1 className='text-center'>No hay este tipo de producto, busque otra categoría</h1>
+            </div>
+          ) : (
+            <div className='container-fluid'>
+              <div className='row'>
+                <div className='col-12'>
+                  <h4 className='suggestions'>Filtrados por categoría, tipo o día festivo</h4>
+                </div>
+              </div>
+              <div className='row'>
+                {products.map((product) => {
+                  return (
+                    <div key={product.id} className='col-12 col-sm-6 col-md-4 col-lg-3 mb-4 justify-content-center'>
+                      <Cards
+                        product={product}
+                      />
+                    </div>
+                  );
+                })}
               </div>
             </div>
-            <div className='row'>
-              {products.map((product) => {
-                return (
-                  <div key={product.id} className='col-12 col-sm-6 col-md-4 col-lg-3 mb-4 justify-content-center'>
-                    <Cards
-                      product={product}
-                    />
-                  </div>
-                );
-              })}
-            </div>
-          </div>
+          )}
         </section>
       </>
     );

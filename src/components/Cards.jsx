@@ -1,37 +1,65 @@
-import React, { useState } from 'react';
+import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import history from '../routes/history';
-import Counter from './Counter';
-import candy from '../assets/static/candy.png';
+// import history from '../routes/history';
+// import Counter from './Counter';
 import blueCar from '../assets/static/blue-car.png';
 import '../assets/styles/components/Cards.scss';
 
 const Cards = ({ product }) => {
-
-  const { name, price, id, images } = product;
+  const { name, price, _id, images } = product;
+  const str = String(_id);
   const handleSubmit = (e) => {
-    axios.get(`http://localhost:3000/candy/?:${id}`, {
+    axios.get(`http://localhost:3000/api/candy/${str}`, {
       headers: {
         'Access-Control-Allow-Origin': '*',
       },
     })
       .then((res) => {
-        const info = res.data[0];
-        console.log(info);
+        const info = res.data.data;
         const string = JSON.stringify(info);
-        localStorage.setItem('productForDescription', string);
-        history.push('/productDescription');
+        localStorage.removeItem('candyDataBase');
+        localStorage.setItem('candyDataBase', string);
+        location.reload();
       })
       .catch((err) => console.log(err));
-    e.preventDefault();
   };
+
+  function AddToCart() {
+    if (localStorage.getItem('shoppingCart')) {
+      const local = localStorage.getItem('shoppingCart');
+      const array = JSON.parse(local);
+      const parsed = array.filter((item) => {
+        return item._id !== _id;
+      });
+      const document = {};
+      document['_id'] = _id;
+      document['images'] = images[0].img;
+      document['name'] = name;
+      document['price'] = price;
+      document['count'] = 0;
+      parsed.push(document);
+      const string = JSON.stringify(parsed);
+      localStorage.setItem('shoppingCart', string);
+    } else {
+      const data = [];
+      const document = {};
+      document['_id'] = _id;
+      document['images'] = images[0].img;
+      document['name'] = name;
+      document['price'] = price;
+      document['count'] = 0;
+      data.push(document);
+      const string = JSON.stringify(data);
+      localStorage.setItem('shoppingCart', string);
+    }
+  }
 
   return (
     <section>
       <div className='card'>
         <Link onClick={handleSubmit} to='/productDescription'>
-          <img src={candy} className='card-img-top' alt='candy' />
+          <img src={images[0].img} className='card-img-top' alt='candy' />
         </Link>
         <div className='part-one'>
           <Link onClick={handleSubmit} to='/productDescription'>
@@ -42,12 +70,9 @@ const Cards = ({ product }) => {
           </h6>
         </div>
         <div className='part-two'>
-          <a className='col-xl-6 card-link blue-car'>
+          <Link to='/shoppingCart' onClick={AddToCart} className='col-xl-12 card-link blue-car'>
             <img src={blueCar} alt='car' />
-          </a>
-          <div className='col-xl-6'>
-            <Counter />
-          </div>
+          </Link>
         </div>
       </div>
     </section>

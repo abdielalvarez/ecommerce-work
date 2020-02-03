@@ -52,63 +52,62 @@ class Navbar extends Component {
       });
     }
 
-    handleFilter = (paramater) => {
-      // CHECAR HANDLE FILTER Y HANDLESEARCH SI ES CORRECTA A LÓGICA AL HABER TERMINADO EL BACKEND
-
-      // if (!localStorage.getItem('categoryData')) {
-      //   axios.get(`http://localhost:3000/candy/?:${paramater}`, {
-      //     headers: {
-      //       'Access-Control-Allow-Origin': '*',
-      //     },
-      //   })
-      //     .then((res) => {
-      //       const info = res.data;
-      //       const string = JSON.stringify(info);
-      //       localStorage.setItem('categoryData', string);
-      //     })
-      //     .catch((err) => {
-      //       this.setState({
-      //         error: err,
-      //       });
-      //     });
-      // } else {
-      //   const local = localStorage.getItem('categoryData');
-      //   const parsed = JSON.parse(local);
-      //   this.setState({
-      //     products: parsed,
-      //   });
-      // }
-      axios.get(`http://localhost:3000/candy/?:${paramater}`, {
+    handleFilter = (category, filter) => {
+      axios.get(`http://localhost:3000/api/candiesByFilter/${category}/${filter}`, {
         headers: {
           'Access-Control-Allow-Origin': '*',
         },
       })
         .then((res) => {
-          const info = res.data;
-          // console.log(info);
+          const info = res.data.data;
           const string = JSON.stringify(info);
-          if (!localStorage.getItem('categoryData')) {
-            localStorage.setItem('categoryData', string);
-          }
-        })
-        .catch((err) => {
-          console.log(err);
+          localStorage.removeItem('candyDataBase');
+          localStorage.setItem('candyDataBase', string);
+          history.push('/filtered');
+          location.reload();
         });
+      // .catch((err) => {
+      //   this.setState({
+      //     error: err,
+      //   });
+      // });
     }
 
     handleSearch = (e) => {
       const { search } = this.state;
-      axios.get(`http://localhost:3000/candy/?:${search}`, {
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-        },
-      })
-        .then((res) => {
-          // console.log(res);
-          history.push('/filtered');
+      if (search === '') {
+        axios.get('http://localhost:3000/api/candies', {
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+          },
         })
-        .catch((err) => console.log(err));
-      e.preventDefault();
+          .then((res) => {
+            const info = res.data.data;
+            const string = JSON.stringify(info);
+            localStorage.removeItem('candyDataBase');
+            localStorage.setItem('candyDataBase', string);
+            history.push('/filtered');
+            location.reload();
+          })
+          .catch((err) => console.log(err));
+        e.preventDefault();
+      } else {
+        axios.get(`http://localhost:3000/api/candiesBySearch/${search}`, {
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+          },
+        })
+          .then((res) => {
+            const info = res.data.data;
+            const string = JSON.stringify(info);
+            localStorage.removeItem('candyDataBase');
+            localStorage.setItem('candyDataBase', string);
+            history.push('/filtered');
+            location.reload();
+          })
+          .catch((err) => console.log(err));
+        e.preventDefault();
+      }
     }
 
     render() {
@@ -134,16 +133,16 @@ class Navbar extends Component {
                                 TIPOS
                 </a>
                 <div className={`dropdown-menu w-100 text-center text-md-left ${menuClassTypes}`} aria-labelledby='navbarDropdown'>
-                  <Link to='/filtered' onClick={this.handleFilter.bind(this, 'caramelos')} className='dropdown-item'>Caramelos</Link>
-                  <Link to='/filtered' onClick={this.handleFilter.bind(this, 'picantes')} className='dropdown-item'>Picantes</Link>
-                  <Link to='/filtered' onClick={this.handleFilter.bind(this, 'chocolates')} className='dropdown-item'>Chocolates</Link>
-                  <Link to='/filtered' onClick={this.handleFilter.bind(this, 'chicles')} className='dropdown-item'>Chicles</Link>
-                  <Link to='/filtered' onClick={this.handleFilter.bind(this, 'piñateros')} className='dropdown-item'>Piñateros</Link>
-                  <Link to='/filtered' onClick={this.handleFilter.bind(this, 'gomitas')} className='dropdown-item'>Gomitas</Link>
-                  <Link to='/filtered' onClick={this.handleFilter.bind(this, 'galletas')} className='dropdown-item'>Galletas</Link>
-                  <Link to='/filtered' onClick={this.handleFilter.bind(this, 'helados')} className='dropdown-item'>Helados</Link>
-                  <Link to='/filtered' onClick={this.handleFilter.bind(this, 'paletas')} className='dropdown-item'>Paletas</Link>
-                  <Link to='/filtered' onClick={this.handleFilter.bind(this, 'rellenos')} className='dropdown-item'>Rellenos</Link>
+                  <Link to='#' onClick={this.handleFilter.bind(this, 'type', 'caramelos')} className='dropdown-item'>Caramelos</Link>
+                  <Link to='#' onClick={this.handleFilter.bind(this, 'type', 'picantes')} className='dropdown-item'>Picantes</Link>
+                  <Link to='#' onClick={this.handleFilter.bind(this, 'type', 'chocolates')} className='dropdown-item'>Chocolates</Link>
+                  <Link to='#' onClick={this.handleFilter.bind(this, 'type', 'chicles')} className='dropdown-item'>Chicles</Link>
+                  <Link to='#' onClick={this.handleFilter.bind(this, 'type', 'piñateros')} className='dropdown-item'>Piñateros</Link>
+                  <Link to='#' onClick={this.handleFilter.bind(this, 'type', 'gomitas')} className='dropdown-item'>Gomitas</Link>
+                  <Link to='#' onClick={this.handleFilter.bind(this, 'type', 'galletas')} className='dropdown-item'>Galletas</Link>
+                  <Link to='#' onClick={this.handleFilter.bind(this, 'type', 'helados')} className='dropdown-item'>Helados</Link>
+                  <Link to='#' onClick={this.handleFilter.bind(this, 'type', 'paletas')} className='dropdown-item'>Paletas</Link>
+                  <Link to='#' onClick={this.handleFilter.bind(this, 'type', 'rellenos')} className='dropdown-item'>Rellenos</Link>
                 </div>
               </li>
 
@@ -163,11 +162,11 @@ class Navbar extends Component {
                   className={`dropdown-menu w-100 text-center text-md-left ${menuClassCharacters}`}
                   aria-labelledby='navbarDropdown'
                 >
-                  <Link to='/filtered' onClick={this.handleFilter.bind(this, 'barbie')} className='dropdown-item'>Barbie</Link>
-                  <Link to='/filtered' onClick={this.handleFilter.bind(this, 'spongeBob')} className='dropdown-item'>The SpongeBob</Link>
-                  <Link to='/filtered' onClick={this.handleFilter.bind(this, 'powerRangers')} className='dropdown-item'>The PowerRangers</Link>
-                  <Link to='/filtered' onClick={this.handleFilter.bind(this, 'myLittlePony')} className='dropdown-item'>My Little Pony</Link>
-                  <Link to='/filtered' onClick={this.handleFilter.bind(this, 'toyStory')} className='dropdown-item'>Toy Story</Link>
+                  <Link to='#' onClick={this.handleFilter.bind(this, 'characters', 'barbie')} className='dropdown-item'>Barbie</Link>
+                  <Link to='#' onClick={this.handleFilter.bind(this, 'characters', 'spongeBob')} className='dropdown-item'>The SpongeBob</Link>
+                  <Link to='#' onClick={this.handleFilter.bind(this, 'characters', 'powerRangers')} className='dropdown-item'>The PowerRangers</Link>
+                  <Link to='#' onClick={this.handleFilter.bind(this, 'characters', 'myLittlePony')} className='dropdown-item'>My Little Pony</Link>
+                  <Link to='#' onClick={this.handleFilter.bind(this, 'characters', 'toyStory')} className='dropdown-item'>Toy Story</Link>
                 </div>
               </li>
 
@@ -188,11 +187,11 @@ class Navbar extends Component {
                   className={`dropdown-menu w-100 text-center text-md-left ${menuClassDays}`}
                   aria-labelledby='navbarDropdown'
                 >
-                  <Link to='/filtered' onClick={this.handleFilter.bind(this, 'cumpleanos')} className='dropdown-item'>Cumpleaños</Link>
-                  <Link to='/filtered' onClick={this.handleFilter.bind(this, 'navidad')} className='dropdown-item'>Navidad y Año Nuevo</Link>
-                  <Link to='/filtered' onClick={this.handleFilter.bind(this, 'diaDelNiño')} className='dropdown-item'>Día del niño</Link>
-                  <Link to='/filtered' onClick={this.handleFilter.bind(this, 'diaDeMuertos')} className='dropdown-item'>Día de muertos</Link>
-                  <Link to='/filtered' onClick={this.handleFilter.bind(this, 'diaDeLasMadres')} className='dropdown-item'>Día de las madres</Link>
+                  <Link to='#' onClick={this.handleFilter.bind(this, 'publicHoliday', 'cumpleanos')} className='dropdown-item'>Cumpleaños</Link>
+                  <Link to='#' onClick={this.handleFilter.bind(this, 'publicHoliday', 'navidad')} className='dropdown-item'>Navidad y Año Nuevo</Link>
+                  <Link to='#' onClick={this.handleFilter.bind(this, 'publicHoliday', 'diaDelNiño')} className='dropdown-item'>Día del niño</Link>
+                  <Link to='#' onClick={this.handleFilter.bind(this, 'publicHoliday', 'diaDeMuertos')} className='dropdown-item'>Día de muertos</Link>
+                  <Link to='#' onClick={this.handleFilter.bind(this, 'publicHoliday', 'diaDeLasMadres')} className='dropdown-item'>Día de las madres</Link>
                 </div>
               </li>
             </ul>

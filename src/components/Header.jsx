@@ -4,7 +4,8 @@ import { Modal, ModalHeader, ModalBody } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Swal from 'sweetalert2';
-import email from '../assets/static/email.png';
+import history from '../routes/history';
+// import email from '../assets/static/email.png';
 import car from '../assets/static/car.png';
 import user from '../assets/static/user.png';
 import logo from '../assets/static/logo-dummy.png';
@@ -61,7 +62,6 @@ class Header extends Component {
       delete this.state.isOpenUserIcon;
       delete this.state.signInIsOpen;
       delete this.state.signUpIsOpen;
-      console.log(this.state);
       if (this.state.password !== this.state.samePassword) {
         e.preventDefault();
         throw new Error(
@@ -76,23 +76,31 @@ class Header extends Component {
         );
       }
       delete this.state.samePassword;
+
       axios.post(
         'http://localhost:3000/api/auth/sign-up',
         this.state,
       )
         .then((res) => {
-          console.log(res);
+          const id = res.data.data;
+          const correo = this.state.email;
+          const obj = {};
+          obj['id'] = id;
+          obj['email'] = correo;
+          const str = JSON.stringify(obj);
+          localStorage.setItem('user', str);
           Swal.fire({
             icon: 'success',
             title: 'Excelente',
-            text: `${res.data.data.data.name}, has creado exitosamente tu cuenta de Beauty Box`,
+            text: `${this.state.name}, has creado exitosamente tu cuenta de Beauty Box`,
           });
+
         })
         .catch(() => {
           Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: 'La Api dataBase.json no está levantada',
+            text: 'Lo lamentamos, ese usuario ya existe o hay problemas con nuestro servidor, inténtelo más tarde',
           });
           this.setState({
             signUpIsOpen: true,
@@ -122,7 +130,12 @@ class Header extends Component {
         },
       })
         .then((data) => {
-          console.log(data);
+          // console.log(data);
+          const str = JSON.stringify(data.data.user);
+          localStorage.setItem('user', str);
+          this.setState({
+            isLogin: true,
+          });
           Swal.fire({
             icon: 'success',
             title: 'Excelente',
@@ -133,10 +146,44 @@ class Header extends Component {
           Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: 'La Api dataBase.json no está levantada',
+            text: 'Lo lamentamos hubo un error con su usuario o contraseña, vuelva a intentarlo',
           });
         });
       e.preventDefault();
+    }
+
+    logoutHandleRequest = (e) => {
+      const localUser = localStorage.getItem('user');
+      const parsedUser = JSON.parse(localUser);
+      const localCart = localStorage.getItem('shoppingCart');
+      const parsedCart = JSON.parse(localCart);
+      const localAddresses = localStorage.getItem('addressAlias');
+      const parsedAddresses = JSON.parse(localAddresses);
+      const localAlias = localStorage.getItem('alias');
+      const parsedAlias = JSON.parse(localAlias);
+      axios({
+        method: 'post',
+        url: 'http://localhost:3000/api/auth/sign-out',
+        data: {
+          parsedUser,
+          parsedCart,
+          parsedAddresses,
+          parsedAlias,
+        },
+      })
+        .then((data) => {
+          Swal.fire({
+            icon: 'success',
+            title: 'Excelente',
+            text: 'Has cerrado tu sesión exitosamente',
+          });
+          history.push('/');
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      localStorage.removeItem('user');
+      location.reload();
     }
 
     render() {
@@ -149,11 +196,11 @@ class Header extends Component {
             </Link>
             <div className='collapse navbar-collapse justify-content-center' id='navbarResponsive'>
               <ul className='navbar-nav ml-0 ml-sm-auto text-center'>
-                <li className='nav-item'>
+                {/* <li className='nav-item'>
                   <Link className='nav-link' to='/'>
                     <img src={email} alt='sendEmail' />
                   </Link>
-                </li>
+                </li> */}
                 <li className='nav-item'>
                   <Link className='nav-link' to='/shoppingCart'>
                     <img src={car} alt='shoppingCar' />
@@ -164,9 +211,11 @@ class Header extends Component {
                     <img src={user} alt='userIcon' />
                   </a>
                   <div className={`user-item dropdown-menu-right ${userIcon}`} aria-labelledby='navbarDropdown'>
-                    <a className='item dropdown-item' onClick={this.toggleSignIn.bind(this)} href='#'>Iniciar Sesión</a>
+                    {!(localStorage.getItem('user')) ?
+                      <a className='item dropdown-item' onClick={this.toggleSignIn.bind(this)} href='#'>Iniciar sesión</a> :
+                      <a className='item dropdown-item' onClick={this.logoutHandleRequest.bind(this)} href='#'>Cerrar sesión</a>}
                     <a className='item dropdown-item' onClick={this.toggleSignUp.bind(this)} href='#'>Registrarse</a>
-                    <a className='item dropdown-item' href='/'>Editar tu perfil</a>
+                    {/* <a className='item dropdown-item' href='/'>Editar tu perfil</a> */}
                   </div>
                 </li>
               </ul>
@@ -175,8 +224,8 @@ class Header extends Component {
 
           {/* MODAL FOR LOGIN */}
 
-          {/* <Modal isOpen={this.state.signInIsOpen} toggle={this.toggleSignIn.bind(this)}> */}
-          <Modal isOpen='true' toggle={this.toggleSignIn.bind(this)}>
+          <Modal isOpen={this.state.signInIsOpen} toggle={this.toggleSignIn.bind(this)}>
+          {/* <Modal isOpen='true' toggle={this.toggleSignIn.bind(this)}> */}
             <ModalHeader toggle={this.toggleSignIn.bind(this)}>
               <div className='container'>
                 <h3>Inicia sesión</h3>
