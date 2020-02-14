@@ -15,6 +15,7 @@ class ShoppingCart extends Component {
     this.state = {
       createDirectionIsOpen: false,
     };
+    this.removeAlias = this.removeAlias.bind(this);
   }
 
   toggleCreateDirection() {
@@ -25,11 +26,22 @@ class ShoppingCart extends Component {
 
   keepAddingToCart = () => {
     history.push('/');
-    location.reload();
+    window.location.reload();
   }
 
   refresh = () => {
-    location.reload();
+    window.location.reload();
+  }
+
+  removeAlias = (id) => {
+    const local = localStorage.getItem('addressAlias');
+    const parsed = JSON.parse(local);
+    const filtered = parsed.filter((index) => {
+      return index === id;
+    });
+    const str = JSON.stringify(filtered);
+    localStorage.setItem('addressAlias', str);
+    this.refresh();
   }
 
   subtotal = () => {
@@ -79,6 +91,7 @@ class ShoppingCart extends Component {
             const { images, name, price, _id, count, id } = data;
             return <HorizontalCards images={images} name={name} price={price} _id={_id} counter={count} key={id} />;
           }) : <h1 className='text-center'>No hay nada en tu carrito</h1>}
+          {localStorage.getItem('shoppingCart') === '[]' ? <h1 className='text-center'>No hay nada en tu carrito</h1> : null}
           {!localStorage.getItem('shoppingCart') ? (
             <div className='row makeDistance'>
               <div className='col-2 offset-5'>
@@ -98,7 +111,7 @@ class ShoppingCart extends Component {
                   <div className='col-2 offset-10 text-left'>
                     SUBTOTAL:
                     $
-                    {this.subtotal()}
+                    {localStorage.getItem('shoppingCart') === '[]' ? 0 : this.subtotal()}
                     <br />
                     <small style={{ 'cursor': 'pointer', 'lineHeight': '1px' }} onClick={this.refresh.bind(this)}>
                       TOCA AQUÍ para actualizar tu subtotal como precaución antes de comprar.
@@ -154,9 +167,9 @@ class ShoppingCart extends Component {
                     </div>
                   </Link>
                 </div>
-                {!localStorage.getItem('addressAlias') ? <></> : alias.map((item) => {
+                {!localStorage.getItem('addressAlias') ? <></> : alias.map((item, index) => {
                   const { alias } = item;
-                  return <AliasDirection alias={alias} />;
+                  return <AliasDirection alias={alias} removeAlias={this.removeAlias} id={index} />;
                 })}
               </div>
             </div>

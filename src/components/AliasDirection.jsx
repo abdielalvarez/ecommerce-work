@@ -4,7 +4,7 @@ import history from '../routes/history';
 import erase from '../assets/static/miniDelete.png';
 import '../assets/styles/components/AliasDirection.scss';
 
-function AliasDirection({ alias }) {
+function AliasDirection({ alias, id, removeAlias }) {
 
   function defineShippingAddress() {
     const local = localStorage.getItem('addressAlias');
@@ -12,7 +12,6 @@ function AliasDirection({ alias }) {
     const parsed = array.filter((item) => {
       return item.alias === alias;
     });
-    console.log(parsed);
     if (localStorage.getItem('alias')) {
       localStorage.removeItem('alias');
     }
@@ -29,7 +28,7 @@ function AliasDirection({ alias }) {
         </div>
       </Link>
       <button type='submit'>
-        <img src={erase} className='' alt='delete' />
+        <img src={erase} alt='delete' onClick={() => removeAlias(id)} />
       </button>
     </div>
   );

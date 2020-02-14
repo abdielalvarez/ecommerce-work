@@ -1,13 +1,22 @@
-FROM node:carbon
+FROM node:10.16.0
+WORKDIR /app
+COPY . /app
+RUN npm install
+EXPOSE 9001
+CMD ["npm", "start"]
 
-WORKDIR /usr/src/ecommerce-work
+# FROM node:carbon
+
+# WORKDIR /usr/src/ecommerce-work
 
 # COPY package*.json ./
+# COPY package-lock*.json ./
+# RUN npm install
 
-RUN npm install
+# # RUN npm install -D webpack webpack-dev-server webpack-cli
 
-COPY . .
+# COPY . ./
 
-EXPOSE 9001
+# EXPOSE 9001
 
-CMD ["npm", "start"]
+# CMD ["npm", "start"]

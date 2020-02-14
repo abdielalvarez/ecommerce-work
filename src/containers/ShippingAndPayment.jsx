@@ -269,11 +269,11 @@ class ShippingAndPayment extends Component {
                       ,
                       {' '}
                       {colDel}
-                      {' '}
                       ,
                       {' '}
                       {postalCode}
                       ,
+                      {' '}
                       {betweenStreets}
                       ,
                       {' '}
@@ -485,9 +485,9 @@ class ShippingAndPayment extends Component {
                 >
                       INICIAR SESIÓN
                 </button>
-                <button id='sign-google' type='submit' className='btn btn-block'>ENTRAR CON GOOGLE</button>
+                {/* <button id='sign-google' type='submit' className='btn btn-block'>ENTRAR CON GOOGLE</button> */}
                 <small id='link-sign-up' className='form-text text-muted'>
-¿Aún no tienes cuenta?
+                  ¿Aún no tienes cuenta?
                   {' '}
                   <a href='#' onClick={this.toggleSignUp.bind(this)}>Regístrate</a>
                   {' '}
