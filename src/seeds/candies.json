@@ -1,0 +1,861 @@
+[{
+  "name": "Rabbit - Legs",
+  "images": [
+    {
+      "img": "http://dummyimage.com/100x100.png/dddddd/000000"
+    },
+    {
+      "img": "http://dummyimage.com/100x100.png/dddddd/000000"
+    },
+    {
+      "img": "http://dummyimage.com/100x100.png/dddddd/000000"
+    }
+  ],
+  "type": {
+    "caramelos": false,
+    "picantes": false,
+    "chocolates": false,
+    "chicles": false,
+    "piñateros": false,
+    "gomitas": true,
+    "galletas": true,
+    "helados": true,
+    "paletas": false,
+    "rellenos": true
+  },
+  "characters": {
+    "barbie": false,
+    "spongeBob": true,
+    "powerRangers": true,
+    "myLittlePony": true,
+    "toyStory": false
+  },
+  "publicHoliday": {
+    "cumpleaños": true,
+    "navidad": false,
+    "diaDelNiño": true,
+    "diaDeMuertos": false,
+    "diaDeLasMadres": true
+  },
+  "price": "$8.73",
+  "description": "Unspecified fracture of the lower end of left radius, subsequent encounter for open fracture type IIIA, IIIB, or IIIC with delayed healing",
+  "stock": 25,
+  "id": 1
+}, {
+  "name": "Beer - Tetleys",
+  "images": [
+    {
+      "img": "http://dummyimage.com/100x100.png/ff4444/ffffff"
+    },
+    {
+      "img": "http://dummyimage.com/100x100.png/ff4444/ffffff"
+    },
+    {
+      "img": "http://dummyimage.com/100x100.png/5fa2dd/ffffff"
+    }
+  ],
+  "type": {
+    "caramelos": false,
+    "picantes": false,
+    "chocolates": true,
+    "chicles": true,
+    "piñateros": false,
+    "gomitas": true,
+    "galletas": true,
+    "helados": false,
+    "paletas": false,
+    "rellenos": true
+  },
+  "characters": {
+    "barbie": true,
+    "spongeBob": true,
+    "powerRangers": false,
+    "myLittlePony": true,
+    "toyStory": false
+  },
+  "publicHoliday": {
+    "cumpleaños": true,
+    "navidad": true,
+    "diaDelNiño": true,
+    "diaDeMuertos": false,
+    "diaDeLasMadres": true
+  },
+  "price": "$3.68",
+  "description": "Occupant of animal-drawn vehicle injured in collision with other specified motor vehicle, initial encounter",
+  "stock": 21,
+  "id": 2
+}, {
+  "name": "Wine - Zinfandel Rosenblum",
+  "images": [
+    {
+      "img": "http://dummyimage.com/100x100.png/ff4444/ffffff"
+    },
+    {
+      "img": "http://dummyimage.com/100x100.png/ff4444/ffffff"
+    },
+    {
+      "img": "http://dummyimage.com/100x100.png/cc0000/ffffff"
+    }
+  ],
+  "type": {
+    "caramelos": false,
+    "picantes": false,
+    "chocolates": false,
+    "chicles": false,
+    "piñateros": false,
+    "gomitas": false,
+    "galletas": true,
+    "helados": true,
+    "paletas": true,
+    "rellenos": true
+  },
+  "characters": {
+    "barbie": false,
+    "spongeBob": true,
+    "powerRangers": true,
+    "myLittlePony": true,
+    "toyStory": true
+  },
+  "publicHoliday": {
+    "cumpleaños": true,
+    "navidad": true,
+    "diaDelNiño": false,
+    "diaDeMuertos": true,
+    "diaDeLasMadres": true
+  },
+  "price": "$2.39",
+  "description": "Nondisplaced fracture of olecranon process with intraarticular extension of right ulna, subsequent encounter for open fracture type I or II with delayed healing",
+  "stock": 50,
+  "id": 3
+}, {
+  "name": "Banana - Leaves",
+  "images": [
+    {
+      "img": "http://dummyimage.com/100x100.png/ff4444/ffffff"
+    },
+    {
+      "img": "http://dummyimage.com/100x100.png/cc0000/ffffff"
+    },
+    {
+      "img": "http://dummyimage.com/100x100.png/ff4444/ffffff"
+    }
+  ],
+  "type": {
+    "caramelos": true,
+    "picantes": false,
+    "chocolates": false,
+    "chicles": true,
+    "piñateros": false,
+    "gomitas": false,
+    "galletas": false,
+    "helados": true,
+    "paletas": false,
+    "rellenos": false
+  },
+  "characters": {
+    "barbie": true,
+    "spongeBob": true,
+    "powerRangers": false,
+    "myLittlePony": true,
+    "toyStory": false
+  },
+  "publicHoliday": {
+    "cumpleaños": false,
+    "navidad": true,
+    "diaDelNiño": false,
+    "diaDeMuertos": false,
+    "diaDeLasMadres": false
+  },
+  "price": "$1.35",
+  "description": "Laceration with foreign body of unspecified cheek and temporomandibular area",
+  "stock": 70,
+  "id": 4
+}, {
+  "name": "Bread - Pita, Mini",
+  "images": [
+    {
+      "img": "http://dummyimage.com/100x100.png/5fa2dd/ffffff"
+    },
+    {
+      "img": "http://dummyimage.com/100x100.png/ff4444/ffffff"
+    },
+    {
+      "img": "http://dummyimage.com/100x100.png/5fa2dd/ffffff"
+    }
+  ],
+  "type": {
+    "caramelos": false,
+    "picantes": false,
+    "chocolates": false,
+    "chicles": false,
+    "piñateros": true,
+    "gomitas": false,
+    "galletas": true,
+    "helados": false,
+    "paletas": true,
+    "rellenos": false
+  },
+  "characters": {
+    "barbie": false,
+    "spongeBob": true,
+    "powerRangers": false,
+    "myLittlePony": false,
+    "toyStory": false
+  },
+  "publicHoliday": {
+    "cumpleaños": false,
+    "navidad": true,
+    "diaDelNiño": true,
+    "diaDeMuertos": false,
+    "diaDeLasMadres": true
+  },
+  "price": "$0.50",
+  "description": "Accidental bite by another person, initial encounter",
+  "stock": 53,
+  "id": 5
+}, {
+  "name": "Beer - Tetleys",
+  "images": [
+    {
+      "img": "http://dummyimage.com/100x100.png/cc0000/ffffff"
+    },
+    {
+      "img": "http://dummyimage.com/100x100.png/ff4444/ffffff"
+    },
+    {
+      "img": "http://dummyimage.com/100x100.png/5fa2dd/ffffff"
+    }
+  ],
+  "type": {
+    "caramelos": true,
+    "picantes": true,
+    "chocolates": true,
+    "chicles": false,
+    "piñateros": true,
+    "gomitas": false,
+    "galletas": false,
+    "helados": true,
+    "paletas": false,
+    "rellenos": true
+  },
+  "characters": {
+    "barbie": true,
+    "spongeBob": true,
+    "powerRangers": true,
+    "myLittlePony": true,
+    "toyStory": false
+  },
+  "publicHoliday": {
+    "cumpleaños": true,
+    "navidad": true,
+    "diaDelNiño": false,
+    "diaDeMuertos": true,
+    "diaDeLasMadres": true
+  },
+  "price": "$0.46",
+  "description": "Poisoning by other synthetic narcotics, undetermined, sequela",
+  "stock": 7,
+  "id": 6
+}, {
+  "name": "Cheese - Victor Et Berthold",
+  "images": [
+    {
+      "img": "http://dummyimage.com/100x100.png/cc0000/ffffff"
+    },
+    {
+      "img": "http://dummyimage.com/100x100.png/dddddd/000000"
+    },
+    {
+      "img": "http://dummyimage.com/100x100.png/5fa2dd/ffffff"
+    }
+  ],
+  "type": {
+    "caramelos": true,
+    "picantes": false,
+    "chocolates": false,
+    "chicles": false,
+    "piñateros": true,
+    "gomitas": true,
+    "galletas": true,
+    "helados": false,
+    "paletas": false,
+    "rellenos": true
+  },
+  "characters": {
+    "barbie": true,
+    "spongeBob": false,
+    "powerRangers": true,
+    "myLittlePony": true,
+    "toyStory": false
+  },
+  "publicHoliday": {
+    "cumpleaños": false,
+    "navidad": true,
+    "diaDelNiño": false,
+    "diaDeMuertos": false,
+    "diaDeLasMadres": false
+  },
+  "price": "$5.24",
+  "description": "Charcot's joint, unspecified knee",
+  "stock": 44,
+  "id": 7
+}, {
+  "name": "Cafe Royale",
+  "images": [
+    {
+      "img": "http://dummyimage.com/100x100.png/cc0000/ffffff"
+    },
+    {
+      "img": "http://dummyimage.com/100x100.png/5fa2dd/ffffff"
+    },
+    {
+      "img": "http://dummyimage.com/100x100.png/cc0000/ffffff"
+    }
+  ],
+  "type": {
+    "caramelos": true,
+    "picantes": false,
+    "chocolates": false,
+    "chicles": true,
+    "piñateros": true,
+    "gomitas": false,
+    "galletas": false,
+    "helados": false,
+    "paletas": true,
+    "rellenos": true
+  },
+  "characters": {
+    "barbie": true,
+    "spongeBob": true,
+    "powerRangers": true,
+    "myLittlePony": true,
+    "toyStory": false
+  },
+  "publicHoliday": {
+    "cumpleaños": false,
+    "navidad": false,
+    "diaDelNiño": false,
+    "diaDeMuertos": true,
+    "diaDeLasMadres": false
+  },
+  "price": "$5.36",
+  "description": "Skeletal fluorosis, lower leg",
+  "stock": 77,
+  "id": 8
+}, {
+  "name": "Bread Sour Rolls",
+  "images": [
+    {
+      "img": "http://dummyimage.com/100x100.png/ff4444/ffffff"
+    },
+    {
+      "img": "http://dummyimage.com/100x100.png/cc0000/ffffff"
+    },
+    {
+      "img": "http://dummyimage.com/100x100.png/dddddd/000000"
+    }
+  ],
+  "type": {
+    "caramelos": false,
+    "picantes": true,
+    "chocolates": true,
+    "chicles": false,
+    "piñateros": false,
+    "gomitas": false,
+    "galletas": false,
+    "helados": true,
+    "paletas": true,
+    "rellenos": false
+  },
+  "characters": {
+    "barbie": false,
+    "spongeBob": false,
+    "powerRangers": false,
+    "myLittlePony": false,
+    "toyStory": true
+  },
+  "publicHoliday": {
+    "cumpleaños": true,
+    "navidad": false,
+    "diaDelNiño": true,
+    "diaDeMuertos": false,
+    "diaDeLasMadres": false
+  },
+  "price": "$9.39",
+  "description": "Type II occipital condyle fracture, unspecified side, subsequent encounter for fracture with delayed healing",
+  "stock": 57,
+  "id": 9
+}, {
+  "name": "Water - San Pellegrino",
+  "images": [
+    {
+      "img": "http://dummyimage.com/100x100.png/cc0000/ffffff"
+    },
+    {
+      "img": "http://dummyimage.com/100x100.png/5fa2dd/ffffff"
+    },
+    {
+      "img": "http://dummyimage.com/100x100.png/dddddd/000000"
+    }
+  ],
+  "type": {
+    "caramelos": true,
+    "picantes": true,
+    "chocolates": false,
+    "chicles": false,
+    "piñateros": true,
+    "gomitas": true,
+    "galletas": false,
+    "helados": false,
+    "paletas": true,
+    "rellenos": false
+  },
+  "characters": {
+    "barbie": false,
+    "spongeBob": true,
+    "powerRangers": true,
+    "myLittlePony": true,
+    "toyStory": true
+  },
+  "publicHoliday": {
+    "cumpleaños": true,
+    "navidad": true,
+    "diaDelNiño": true,
+    "diaDeMuertos": true,
+    "diaDeLasMadres": false
+  },
+  "price": "$5.34",
+  "description": "Toxic effect of lacrimogenic gas, accidental (unintentional), initial encounter",
+  "stock": 88,
+  "id": 10
+}, {
+  "name": "Soup - Knorr, Country Bean",
+  "images": [
+    {
+      "img": "http://dummyimage.com/100x100.png/5fa2dd/ffffff"
+    },
+    {
+      "img": "http://dummyimage.com/100x100.png/dddddd/000000"
+    },
+    {
+      "img": "http://dummyimage.com/100x100.png/ff4444/ffffff"
+    }
+  ],
+  "type": {
+    "caramelos": true,
+    "picantes": true,
+    "chocolates": false,
+    "chicles": false,
+    "piñateros": false,
+    "gomitas": true,
+    "galletas": true,
+    "helados": true,
+    "paletas": true,
+    "rellenos": true
+  },
+  "characters": {
+    "barbie": false,
+    "spongeBob": false,
+    "powerRangers": false,
+    "myLittlePony": false,
+    "toyStory": false
+  },
+  "publicHoliday": {
+    "cumpleaños": false,
+    "navidad": false,
+    "diaDelNiño": true,
+    "diaDeMuertos": false,
+    "diaDeLasMadres": false
+  },
+  "price": "$6.96",
+  "description": "Other specified injury of other blood vessels at forearm level, left arm, subsequent encounter",
+  "stock": 78,
+  "id": 11
+}, {
+  "name": "Croissant, Raw - Mini",
+  "images": [
+    {
+      "img": "http://dummyimage.com/100x100.png/dddddd/000000"
+    },
+    {
+      "img": "http://dummyimage.com/100x100.png/ff4444/ffffff"
+    },
+    {
+      "img": "http://dummyimage.com/100x100.png/cc0000/ffffff"
+    }
+  ],
+  "type": {
+    "caramelos": false,
+    "picantes": true,
+    "chocolates": false,
+    "chicles": true,
+    "piñateros": false,
+    "gomitas": false,
+    "galletas": true,
+    "helados": true,
+    "paletas": false,
+    "rellenos": false
+  },
+  "characters": {
+    "barbie": false,
+    "spongeBob": false,
+    "powerRangers": false,
+    "myLittlePony": true,
+    "toyStory": false
+  },
+  "publicHoliday": {
+    "cumpleaños": false,
+    "navidad": false,
+    "diaDelNiño": true,
+    "diaDeMuertos": true,
+    "diaDeLasMadres": true
+  },
+  "price": "$0.02",
+  "description": "Unspecified separation of retinal layers",
+  "stock": 56,
+  "id": 12
+}, {
+  "name": "Garlic - Peeled",
+  "images": [
+    {
+      "img": "http://dummyimage.com/100x100.png/5fa2dd/ffffff"
+    },
+    {
+      "img": "http://dummyimage.com/100x100.png/cc0000/ffffff"
+    },
+    {
+      "img": "http://dummyimage.com/100x100.png/dddddd/000000"
+    }
+  ],
+  "type": {
+    "caramelos": false,
+    "picantes": true,
+    "chocolates": true,
+    "chicles": false,
+    "piñateros": false,
+    "gomitas": true,
+    "galletas": false,
+    "helados": true,
+    "paletas": false,
+    "rellenos": true
+  },
+  "characters": {
+    "barbie": true,
+    "spongeBob": false,
+    "powerRangers": false,
+    "myLittlePony": false,
+    "toyStory": false
+  },
+  "publicHoliday": {
+    "cumpleaños": true,
+    "navidad": false,
+    "diaDelNiño": false,
+    "diaDeMuertos": false,
+    "diaDeLasMadres": false
+  },
+  "price": "$3.61",
+  "description": "Other forms of listeriosis",
+  "stock": 71,
+  "id": 13
+}, {
+  "name": "Pastry - Baked Cinnamon Stick",
+  "images": [
+    {
+      "img": "http://dummyimage.com/100x100.png/ff4444/ffffff"
+    },
+    {
+      "img": "http://dummyimage.com/100x100.png/5fa2dd/ffffff"
+    },
+    {
+      "img": "http://dummyimage.com/100x100.png/cc0000/ffffff"
+    }
+  ],
+  "type": {
+    "caramelos": false,
+    "picantes": true,
+    "chocolates": true,
+    "chicles": false,
+    "piñateros": false,
+    "gomitas": true,
+    "galletas": false,
+    "helados": true,
+    "paletas": true,
+    "rellenos": true
+  },
+  "characters": {
+    "barbie": false,
+    "spongeBob": true,
+    "powerRangers": false,
+    "myLittlePony": true,
+    "toyStory": false
+  },
+  "publicHoliday": {
+    "cumpleaños": true,
+    "navidad": true,
+    "diaDelNiño": false,
+    "diaDeMuertos": false,
+    "diaDeLasMadres": false
+  },
+  "price": "$4.17",
+  "description": "Undescended and ectopic testicle",
+  "stock": 47,
+  "id": 14
+}, {
+  "name": "Beets",
+  "images": [
+    {
+      "img": "http://dummyimage.com/100x100.png/ff4444/ffffff"
+    },
+    {
+      "img": "http://dummyimage.com/100x100.png/dddddd/000000"
+    },
+    {
+      "img": "http://dummyimage.com/100x100.png/ff4444/ffffff"
+    }
+  ],
+  "type": {
+    "caramelos": false,
+    "picantes": true,
+    "chocolates": false,
+    "chicles": false,
+    "piñateros": false,
+    "gomitas": false,
+    "galletas": false,
+    "helados": true,
+    "paletas": true,
+    "rellenos": false
+  },
+  "characters": {
+    "barbie": false,
+    "spongeBob": false,
+    "powerRangers": false,
+    "myLittlePony": true,
+    "toyStory": false
+  },
+  "publicHoliday": {
+    "cumpleaños": true,
+    "navidad": true,
+    "diaDelNiño": true,
+    "diaDeMuertos": true,
+    "diaDeLasMadres": false
+  },
+  "price": "$7.13",
+  "description": "Dislocation of interphalangeal joint of unspecified great toe, initial encounter",
+  "stock": 57,
+  "id": 15
+}, {
+  "name": "Milk Powder",
+  "images": [
+    {
+      "img": "http://dummyimage.com/100x100.png/dddddd/000000"
+    },
+    {
+      "img": "http://dummyimage.com/100x100.png/5fa2dd/ffffff"
+    },
+    {
+      "img": "http://dummyimage.com/100x100.png/cc0000/ffffff"
+    }
+  ],
+  "type": {
+    "caramelos": false,
+    "picantes": true,
+    "chocolates": false,
+    "chicles": true,
+    "piñateros": true,
+    "gomitas": true,
+    "galletas": true,
+    "helados": false,
+    "paletas": false,
+    "rellenos": true
+  },
+  "characters": {
+    "barbie": false,
+    "spongeBob": false,
+    "powerRangers": false,
+    "myLittlePony": false,
+    "toyStory": true
+  },
+  "publicHoliday": {
+    "cumpleaños": true,
+    "navidad": true,
+    "diaDelNiño": true,
+    "diaDeMuertos": true,
+    "diaDeLasMadres": false
+  },
+  "price": "$3.45",
+  "description": "Malignant neoplasm of short bones of unspecified lower limb",
+  "stock": 63,
+  "id": 16
+}, {
+  "name": "Tomatoes - Plum, Canned",
+  "images": [
+    {
+      "img": "http://dummyimage.com/100x100.png/ff4444/ffffff"
+    },
+    {
+      "img": "http://dummyimage.com/100x100.png/ff4444/ffffff"
+    },
+    {
+      "img": "http://dummyimage.com/100x100.png/cc0000/ffffff"
+    }
+  ],
+  "type": {
+    "caramelos": false,
+    "picantes": true,
+    "chocolates": true,
+    "chicles": true,
+    "piñateros": false,
+    "gomitas": false,
+    "galletas": true,
+    "helados": true,
+    "paletas": true,
+    "rellenos": true
+  },
+  "characters": {
+    "barbie": false,
+    "spongeBob": false,
+    "powerRangers": false,
+    "myLittlePony": false,
+    "toyStory": false
+  },
+  "publicHoliday": {
+    "cumpleaños": true,
+    "navidad": true,
+    "diaDelNiño": true,
+    "diaDeMuertos": false,
+    "diaDeLasMadres": false
+  },
+  "price": "$0.87",
+  "description": "Unspecified fracture of right patella, subsequent encounter for open fracture type I or II with routine healing",
+  "stock": 24,
+  "id": 17
+}, {
+  "name": "Remy Red",
+  "images": [
+    {
+      "img": "http://dummyimage.com/100x100.png/cc0000/ffffff"
+    },
+    {
+      "img": "http://dummyimage.com/100x100.png/cc0000/ffffff"
+    },
+    {
+      "img": "http://dummyimage.com/100x100.png/cc0000/ffffff"
+    }
+  ],
+  "type": {
+    "caramelos": true,
+    "picantes": false,
+    "chocolates": false,
+    "chicles": true,
+    "piñateros": true,
+    "gomitas": false,
+    "galletas": false,
+    "helados": true,
+    "paletas": false,
+    "rellenos": false
+  },
+  "characters": {
+    "barbie": true,
+    "spongeBob": false,
+    "powerRangers": true,
+    "myLittlePony": false,
+    "toyStory": true
+  },
+  "publicHoliday": {
+    "cumpleaños": false,
+    "navidad": true,
+    "diaDelNiño": false,
+    "diaDeMuertos": true,
+    "diaDeLasMadres": false
+  },
+  "price": "$3.13",
+  "description": "Laceration with foreign body of right little finger with damage to nail",
+  "stock": 35,
+  "id": 18
+}, {
+  "name": "Lamb Shoulder Boneless Nz",
+  "images": [
+    {
+      "img": "http://dummyimage.com/100x100.png/ff4444/ffffff"
+    },
+    {
+      "img": "http://dummyimage.com/100x100.png/cc0000/ffffff"
+    },
+    {
+      "img": "http://dummyimage.com/100x100.png/dddddd/000000"
+    }
+  ],
+  "type": {
+    "caramelos": true,
+    "picantes": true,
+    "chocolates": true,
+    "chicles": true,
+    "piñateros": false,
+    "gomitas": false,
+    "galletas": false,
+    "helados": false,
+    "paletas": false,
+    "rellenos": false
+  },
+  "characters": {
+    "barbie": false,
+    "spongeBob": true,
+    "powerRangers": false,
+    "myLittlePony": false,
+    "toyStory": false
+  },
+  "publicHoliday": {
+    "cumpleaños": false,
+    "navidad": false,
+    "diaDelNiño": false,
+    "diaDeMuertos": false,
+    "diaDeLasMadres": true
+  },
+  "price": "$4.94",
+  "description": "Other disorders of phosphorus metabolism",
+  "stock": 93,
+  "id": 19
+}, {
+  "name": "Raspberries - Frozen",
+  "images": [
+    {
+      "img": "http://dummyimage.com/100x100.png/dddddd/000000"
+    },
+    {
+      "img": "http://dummyimage.com/100x100.png/ff4444/ffffff"
+    },
+    {
+      "img": "http://dummyimage.com/100x100.png/cc0000/ffffff"
+    }
+  ],
+  "type": {
+    "caramelos": false,
+    "picantes": false,
+    "chocolates": false,
+    "chicles": false,
+    "piñateros": true,
+    "gomitas": true,
+    "galletas": false,
+    "helados": false,
+    "paletas": false,
+    "rellenos": false
+  },
+  "characters": {
+    "barbie": false,
+    "spongeBob": false,
+    "powerRangers": true,
+    "myLittlePony": true,
+    "toyStory": false
+  },
+  "publicHoliday": {
+    "cumpleaños": false,
+    "navidad": false,
+    "diaDelNiño": true,
+    "diaDeMuertos": false,
+    "diaDeLasMadres": true
+  },
+  "price": "$6.39",
+  "description": "Pleurisy",
+  "stock": 1,
+  "id": 20
+}]

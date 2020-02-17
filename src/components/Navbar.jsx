@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import { firestore } from '../config/Fire';
 import history from '../routes/history';
 import '../assets/styles/components/Navbar.scss';
 
@@ -12,6 +12,7 @@ class Navbar extends Component {
       isOpenCharacters: false,
       isOpenDays: false,
       search: '',
+      filteredProducts: [],
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -53,60 +54,58 @@ class Navbar extends Component {
     }
 
     handleFilter = (category, filter) => {
-      axios.get(`http://localhost:3000/api/candiesByFilter/${category}/${filter}`, {
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-        },
-      })
-        .then((res) => {
-          const info = res.data.data;
-          const string = JSON.stringify(info);
+      firestore.collection('candies').where(`${category}.${filter}`, '==', true).get()
+        .then((snapShots) => {
+          this.setState({
+            filteredProducts: snapShots.docs.map((doc) => {
+              return { _id: doc.id, data: doc.data() };
+            }),
+          });
+          const str = JSON.stringify(this.state.filteredProducts);
           localStorage.removeItem('candyDataBase');
-          localStorage.setItem('candyDataBase', string);
+          localStorage.setItem('candyDataBase', str);
           history.push('/filtered');
-          location.reload();
+          window.location.reload();
+        })
+        .catch((err) => {
+          console.log(err);
         });
-      // .catch((err) => {
-      //   this.setState({
-      //     error: err,
-      //   });
-      // });
     }
 
     handleSearch = (e) => {
       const { search } = this.state;
+      e.preventDefault();
       if (search === '') {
-        axios.get('http://localhost:3000/api/candies', {
-          headers: {
-            'Access-Control-Allow-Origin': '*',
-          },
-        })
-          .then((res) => {
-            const info = res.data.data;
-            const string = JSON.stringify(info);
+        firestore.collection('candies').get()
+          .then((snapShots) => {
+            this.setState({
+              filteredProducts: snapShots.docs.map((doc) => {
+                return { _id: doc.id, data: doc.data() };
+              }),
+            });
+            const str = JSON.stringify(this.state.filteredProducts);
             localStorage.removeItem('candyDataBase');
-            localStorage.setItem('candyDataBase', string);
+            localStorage.setItem('candyDataBase', str);
             history.push('/filtered');
-            location.reload();
+            window.location.reload();
           })
-          .catch((err) => console.log(err));
-        e.preventDefault();
+          .catch((err) => {
+            console.log(err);
+          });
       } else {
-        axios.get(`http://localhost:3000/api/candiesBySearch/${search}`, {
-          headers: {
-            'Access-Control-Allow-Origin': '*',
-          },
-        })
-          .then((res) => {
-            const info = res.data.data;
-            const string = JSON.stringify(info);
+        firestore.collection('candies').where('name', '==', search).get()
+          .then((snapShots) => {
+            this.setState({
+              filteredProducts: snapShots.docs.map((doc) => {
+                return { _id: doc.id, data: doc.data() };
+              }),
+            });
+            const str = JSON.stringify(this.state.filteredProducts);
             localStorage.removeItem('candyDataBase');
-            localStorage.setItem('candyDataBase', string);
+            localStorage.setItem('candyDataBase', str);
             history.push('/filtered');
-            location.reload();
-          })
-          .catch((err) => console.log(err));
-        e.preventDefault();
+            window.location.reload();
+          });
       }
     }
 

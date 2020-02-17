@@ -22,7 +22,6 @@ class App extends Component {
 
   render() {
     const { isOpenUserIcon } = this.state;
-    // console.log(this.props);
     return (
       <BrowserRouter forceRefresh={true}>
         <Router history={history}>

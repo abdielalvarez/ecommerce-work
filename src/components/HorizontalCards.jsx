@@ -6,7 +6,7 @@ import Counter from './Counter';
 import erase from '../assets/static/delete.png';
 import '../assets/styles/components/HorizontalCards.scss';
 
-function HorizontalCards({ images, name, price, _id, counter }) {
+function HorizontalCards({ images, name, price, _id, counter }, id) {
 
   const [count, setCount] = useState(counter);
 
@@ -60,37 +60,37 @@ function HorizontalCards({ images, name, price, _id, counter }) {
       .catch((err) => console.log(err));
   }
 
-  (function definePersonalCart() {
-    if (!localStorage.getItem('shoppingCart')) {
-      const parsed = [];
-      const document = {};
-      document['_id'] = _id;
-      document['images'] = images;
-      document['name'] = name;
-      document['price'] = price;
-      document['count'] = count;
-      document['total'] = total();
-      parsed.push(document);
-      const str = JSON.stringify(parsed);
-      localStorage.setItem('shoppingCart', str);
-    } else {
-      const local = localStorage.getItem('shoppingCart');
-      const array = JSON.parse(local);
-      const parsed = array.filter((item) => {
-        return item._id !== _id;
-      });
-      const document = {};
-      document['_id'] = _id;
-      document['images'] = images;
-      document['name'] = name;
-      document['price'] = price;
-      document['count'] = count;
-      document['total'] = total();
-      parsed.push(document);
-      const str = JSON.stringify(parsed);
-      localStorage.setItem('shoppingCart', str);
-    }
-  })();
+  // (function definePersonalCart() {
+  //   if (!localStorage.getItem('shoppingCart')) {
+  //     const parsed = [];
+  //     const document = {};
+  //     document['id'] = id;
+  //     document['images'] = images;
+  //     document['name'] = name;
+  //     document['price'] = price;
+  //     document['count'] = count;
+  //     document['total'] = total();
+  //     parsed.push(document);
+  //     const str = JSON.stringify(parsed);
+  //     localStorage.setItem('shoppingCart', str);
+  //   } else {
+  //     const local = localStorage.getItem('shoppingCart');
+  //     const array = JSON.parse(local);
+  //     const parsed = array.filter((item) => {
+  //       return item.id !== id;
+  //     });
+  //     const document = {};
+  //     document['id'] = id;
+  //     document['images'] = images;
+  //     document['name'] = name;
+  //     document['price'] = price;
+  //     document['count'] = count;
+  //     document['total'] = total();
+  //     parsed.push(document);
+  //     const str = JSON.stringify(parsed);
+  //     localStorage.setItem('shoppingCart', str);
+  //   }
+  // })();
 
   return (
     <div className='row pb-3'>

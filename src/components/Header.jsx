@@ -4,6 +4,7 @@ import { Modal, ModalHeader, ModalBody } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { firebase } from '../config/Fire';
 import history from '../routes/history';
 // import email from '../assets/static/email.png';
 import car from '../assets/static/car.png';
@@ -16,6 +17,7 @@ class Header extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      user: {},
       isOpenUserIcon: this.props.isOpenUserIcon,
       signInIsOpen: false,
       signUpIsOpen: false,
@@ -28,7 +30,15 @@ class Header extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.registerHandleSubmit = this.registerHandleSubmit.bind(this);
+    this.authListener = this.authListener.bind(this);
+    this.login = this.login.bind(this);
+    this.logout = this.logout.bind(this);
+    this.signup = this.signup.bind(this);
   }
+
+    componentDidMount() {
+      this.authListener();
+    }
 
     toggleOpenChat = () => {
       this.setState({
@@ -107,6 +117,50 @@ class Header extends Component {
           });
         });
       e.preventDefault();
+    }
+
+    authListener = () => {
+      firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+          this.setState({ user });
+          localStorage.setItem('user', user.uid);
+        } else {
+          this.setState({ user: null });
+          localStorage.removeItem('user');
+        }
+      });
+    }
+
+    login = (e) => {
+      const { email, password } = this.state;
+      e.preventDefault();
+      firebase.auth().signInWithEmailAndPassword(email, password)
+        .then((u) => {
+          console.log(u);
+          window.location.reload();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+
+    logout = () => {
+      firebase.auth().signOut();
+      window.location.reload();
+    }
+
+    signup = (e) => {
+      const { email, password } = this.state;
+      e.preventDefault();
+
+      firebase.auth().createUserWithEmailAndPassword(email, password)
+        .then((u) => {
+          console.log(u);
+          window.location.reload();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
 
     loginHandleSubmit = (e) => {
@@ -213,7 +267,7 @@ class Header extends Component {
                   <div className={`user-item dropdown-menu-right ${userIcon}`} aria-labelledby='navbarDropdown'>
                     {!(localStorage.getItem('user')) ?
                       <a className='item dropdown-item' onClick={this.toggleSignIn.bind(this)} href='#'>Iniciar sesión</a> :
-                      <a className='item dropdown-item' onClick={this.logoutHandleRequest.bind(this)} href='#'>Cerrar sesión</a>}
+                      <a className='item dropdown-item' onClick={this.logout} href='#'>Cerrar sesión</a>}
                     <a className='item dropdown-item' onClick={this.toggleSignUp.bind(this)} href='#'>Registrarse</a>
                     {/* <a className='item dropdown-item' href='/'>Editar tu perfil</a> */}
                   </div>
@@ -234,7 +288,7 @@ class Header extends Component {
             </ModalHeader>
             <ModalBody>
               <div className='container'>
-                <form onSubmit={this.loginHandleSubmit}>
+                <form onSubmit={this.login}>
                   <div className='form-group'>
                     <input
                       name='email'
@@ -285,7 +339,7 @@ class Header extends Component {
             </ModalHeader>
             <ModalBody>
               <div className='container'>
-                <form onSubmit={this.registerHandleSubmit}>
+                <form onSubmit={this.signup}>
                   <div className='form-group'>
                     <input
                       type='text'

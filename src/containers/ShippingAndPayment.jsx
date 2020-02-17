@@ -4,6 +4,7 @@ import { Modal, ModalHeader, ModalBody } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { firebase } from '../config/Fire';
 import history from '../routes/history';
 import MiniCards from '../components/MiniCards';
 import estafeta from '../assets/static/estafeta.png';
@@ -18,6 +19,7 @@ class ShippingAndPayment extends Component {
   constructor() {
     super();
     this.state = {
+      user: '',
       estafeta: '',
       fedex: '',
       paypal: '',
@@ -37,6 +39,52 @@ class ShippingAndPayment extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.registerHandleSubmit = this.registerHandleSubmit.bind(this);
     this.goWithoutLogin = this.goWithoutLogin.bind(this);
+    this.authListener = this.authListener.bind(this);
+    this.login = this.login.bind(this);
+    this.logout = this.logout.bind(this);
+    this.signup = this.signup.bind(this);
+  }
+
+  componentDidMount() {
+    this.authListener();
+  }
+
+  authListener() {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.setState({ user });
+        localStorage.setItem('user', user.uid);
+      } else {
+        this.setState({ user: null });
+        localStorage.removeItem('user');
+      }
+    });
+  }
+
+  login = (e) => {
+    const { email, password } = this.state;
+    e.preventDefault();
+    firebase.auth().signInWithEmailAndPassword(email, password)
+      .then((u) => {
+        console.log(u);
+        window.location.reload();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  signup = (e) => {
+    const { email, password } = this.state;
+    e.preventDefault();
+    firebase.auth().createUserWithEmailAndPassword(email, password)
+      .then((u) => {
+        console.log(u);
+        window.location.reload();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   toggleSignIn() {
@@ -452,7 +500,7 @@ class ShippingAndPayment extends Component {
           </ModalHeader>
           <ModalBody>
             <div className='container'>
-              <form onSubmit={this.loginHandleSubmit}>
+              <form onSubmit={this.login}>
                 <div className='form-group'>
                   <input
                     name='email'
@@ -508,7 +556,7 @@ class ShippingAndPayment extends Component {
           </ModalHeader>
           <ModalBody>
             <div className='container'>
-              <form onSubmit={this.registerHandleSubmit}>
+              <form onSubmit={this.signup}>
                 <div className='form-group'>
                   <input
                     type='text'

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import { firestore } from '../config/Fire';
 import Cards from './Cards';
 import '../assets/styles/components/Suggestions.scss';
 
@@ -14,15 +14,12 @@ class Suggestions extends Component {
   }
 
   componentDidMount() {
-    localStorage.removeItem('candyDataBase');
-    axios.get('http://localhost:3000/api/candies', {
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-      },
-    })
-      .then((res) => {
+    firestore.collection('candies').get()
+      .then((snapShots) => {
         this.setState({
-          products: res.data.data,
+          products: snapShots.docs.map((doc) => {
+            return { _id: doc.id, data: doc.data() };
+          }),
         });
         const string = JSON.stringify(this.state.products);
         localStorage.setItem('candyDataBase', string);
@@ -32,6 +29,26 @@ class Suggestions extends Component {
           error: err,
         });
       });
+
+    // localStorage.removeItem('candyDataBase');
+    // axios.get('http://localhost:3000/api/candies', {
+    //   headers: {
+    //     'Access-Control-Allow-Origin': '*',
+    //   },
+    // })
+    //   .then((res) => {
+    //     this.setState({
+    //       products: res.data.data,
+    //     });
+    //     console.log(this.state.products);
+    //     const string = JSON.stringify(this.state.products);
+    //     localStorage.setItem('candyDataBase', string);
+    //   })
+    //   .catch((err) => {
+    //     this.setState({
+    //       error: err,
+    //     });
+    //   });
   }
 
   render() {
@@ -57,16 +74,18 @@ class Suggestions extends Component {
               </div>
             </div>
             <div className='row'>
-              {products.filter(({ price }) => {
+              {products.filter(({ data }) => {
+                const { price } = data;
                 const num = price.replace('$', '');
                 const IntNum = parseFloat(num);
                 return IntNum < 2.5;
               })
-                .map((product) => {
+                .map(({ _id, data }) => {
                   return (
-                    <div key={product.id} className='col-12 col-sm-6 col-md-4 col-lg-3 mb-4 justify-content-center'>
+                    <div key={data.id} className='col-12 col-sm-6 col-md-4 col-lg-3 mb-4 justify-content-center'>
                       <Cards
-                        product={product}
+                        product={data}
+                        id={_id}
                       />
                     </div>
                   );
@@ -78,16 +97,18 @@ class Suggestions extends Component {
               </div>
             </div>
             <div className='row'>
-              {products.filter(({ price }) => {
+              {products.filter(({ data }) => {
+                const { price } = data;
                 const num = price.replace('$', '');
                 const IntNum = parseFloat(num);
                 return IntNum < 5;
               })
-                .map((product) => {
+                .map(({ _id, data }) => {
                   return (
-                    <div key={product.id} className='col-12 col-sm-6 col-md-4 col-lg-3 mb-4 justify-content-center'>
+                    <div key={data.id} className='col-12 col-sm-6 col-md-4 col-lg-3 mb-4 justify-content-center'>
                       <Cards
-                        product={product}
+                        product={data}
+                        id={_id}
                       />
                     </div>
                   );
@@ -99,16 +120,18 @@ class Suggestions extends Component {
               </div>
             </div>
             <div className='row'>
-              {products.filter(({ price }) => {
+              {products.filter(({ data }) => {
+                const { price } = data;
                 const num = price.replace('$', '');
                 const IntNum = parseFloat(num);
                 return IntNum < 7.5;
               })
-                .map((product) => {
+                .map(({ _id, data }) => {
                   return (
-                    <div key={product.id} className='col-12 col-sm-6 col-md-4 col-lg-3 mb-4 justify-content-center'>
+                    <div key={data.id} className='col-12 col-sm-6 col-md-4 col-lg-3 mb-4 justify-content-center'>
                       <Cards
-                        product={product}
+                        product={data}
+                        id={_id}
                       />
                     </div>
                   );
@@ -120,16 +143,18 @@ class Suggestions extends Component {
               </div>
             </div>
             <div className='row'>
-              {products.filter(({ price }) => {
+              {products.filter(({ data }) => {
+                const { price } = data;
                 const num = price.replace('$', '');
                 const IntNum = parseFloat(num);
                 return IntNum > 7.5;
               })
-                .map((product) => {
+                .map(({ _id, data }) => {
                   return (
-                    <div key={product.id} className='col-12 col-sm-6 col-md-4 col-lg-3 mb-4 justify-content-center'>
+                    <div key={data.id} className='col-12 col-sm-6 col-md-4 col-lg-3 mb-4 justify-content-center'>
                       <Cards
-                        product={product}
+                        product={data}
+                        id={_id}
                       />
                     </div>
                   );
