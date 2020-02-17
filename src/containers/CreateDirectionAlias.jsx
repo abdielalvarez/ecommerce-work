@@ -29,15 +29,16 @@ class CreateDirectionAlias extends Component {
   subtotal = () => {
     const local = localStorage.getItem('shoppingCart');
     const parsed = JSON.parse(local);
-    const mapped = parsed.map((item) => {
-      return item.total;
+    const mapped = parsed.map(({ data }) => {
+      return data.total;
     });
     const reduced = mapped.reduce((acc, cur) => {
-      const sum = acc + cur;
+      const numAcc = Number(acc);
+      const numCur = Number(cur);
+      const sum = numAcc + numCur;
       return sum;
     });
-    const int = reduced.toFixed(2);
-    return int;
+    return reduced;
   };
 
   showList = () => {
@@ -270,9 +271,9 @@ class CreateDirectionAlias extends Component {
               <></> : (
                 <div className='container mt-5'>
                   <ul className='list-group'>
-                    {parsed.map((item) => {
-                      const { images, name, total } = item;
-                      return <MiniCards image={images} name={name} total={total} />;
+                    {parsed.map(({ _id, data }) => {
+                      const { images, name, total } = data;
+                      return <MiniCards image={images} name={name} total={total} key={_id} />;
                     })}
                   </ul>
                   <h6 className='text-right mt-2 mr-4'>

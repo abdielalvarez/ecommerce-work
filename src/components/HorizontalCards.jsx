@@ -6,7 +6,7 @@ import Counter from './Counter';
 import erase from '../assets/static/delete.png';
 import '../assets/styles/components/HorizontalCards.scss';
 
-function HorizontalCards({ images, name, price, _id, counter }, id) {
+function HorizontalCards({ images, name, price, id, counter }) {
 
   const [count, setCount] = useState(counter);
 
@@ -27,7 +27,7 @@ function HorizontalCards({ images, name, price, _id, counter }, id) {
     const int = parseFloat(str);
     const res = count * int;
     const almostfixed = res.toFixed(2);
-    const fixed = parseFloat(almostfixed);
+    const fixed = parseFloat(almostfixed).toFixed(2);
     return fixed;
   }
 
@@ -35,10 +35,10 @@ function HorizontalCards({ images, name, price, _id, counter }, id) {
     const local = localStorage.getItem('shoppingCart');
     const parsed = JSON.parse(local);
     const toTrash = parsed.filter((p) => {
-      return _id !== p._id;
+      return p._id !== id;
     });
-    const string = JSON.stringify(toTrash);
-    localStorage.setItem('shoppingCart', string);
+    const str = JSON.stringify(toTrash);
+    localStorage.setItem('shoppingCart', str);
   }
 
   function productDescription() {
@@ -55,42 +55,46 @@ function HorizontalCards({ images, name, price, _id, counter }, id) {
         localStorage.removeItem('candyDataBase');
         localStorage.setItem('candyDataBase', string);
         history.push('/productDescription');
-        location.reload();
+        window.location.reload();
       })
       .catch((err) => console.log(err));
   }
 
-  // (function definePersonalCart() {
-  //   if (!localStorage.getItem('shoppingCart')) {
-  //     const parsed = [];
-  //     const document = {};
-  //     document['id'] = id;
-  //     document['images'] = images;
-  //     document['name'] = name;
-  //     document['price'] = price;
-  //     document['count'] = count;
-  //     document['total'] = total();
-  //     parsed.push(document);
-  //     const str = JSON.stringify(parsed);
-  //     localStorage.setItem('shoppingCart', str);
-  //   } else {
-  //     const local = localStorage.getItem('shoppingCart');
-  //     const array = JSON.parse(local);
-  //     const parsed = array.filter((item) => {
-  //       return item.id !== id;
-  //     });
-  //     const document = {};
-  //     document['id'] = id;
-  //     document['images'] = images;
-  //     document['name'] = name;
-  //     document['price'] = price;
-  //     document['count'] = count;
-  //     document['total'] = total();
-  //     parsed.push(document);
-  //     const str = JSON.stringify(parsed);
-  //     localStorage.setItem('shoppingCart', str);
-  //   }
-  // })();
+  (function definePersonalCart() {
+    if (!localStorage.getItem('shoppingCart')) {
+      const parsed = [];
+      const document = {};
+      const data = {};
+      document['_id'] = id;
+      document['data'] = data;
+      data['images'] = images;
+      data['name'] = name;
+      data['price'] = price;
+      data['count'] = count;
+      data['total'] = total();
+      parsed.push(document);
+      const str = JSON.stringify(parsed);
+      localStorage.setItem('shoppingCart', str);
+    } else {
+      const local = localStorage.getItem('shoppingCart');
+      const array = JSON.parse(local);
+      const parsed = array.filter((item) => {
+        return item._id !== id;
+      });
+      const document = {};
+      const data = {};
+      document['_id'] = id;
+      document['data'] = data;
+      data['images'] = images;
+      data['name'] = name;
+      data['price'] = price;
+      data['count'] = count;
+      data['total'] = total();
+      parsed.push(document);
+      const str = JSON.stringify(parsed);
+      localStorage.setItem('shoppingCart', str);
+    }
+  })();
 
   return (
     <div className='row pb-3'>
@@ -114,7 +118,7 @@ function HorizontalCards({ images, name, price, _id, counter }, id) {
         <Counter count={count} less={less} plus={plus} />
       </div>
       <div className='col-2 text-center d-flex justify-content-center align-items-center'>
-        <h6 className='total-price'>{total()}</h6>
+        <h6 className='total-price'>{`$${total()}`}</h6>
       </div>
     </div>
   );

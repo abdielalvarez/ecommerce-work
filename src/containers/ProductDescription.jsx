@@ -1,10 +1,7 @@
 /* eslint-disable react/no-deprecated */
-/* eslint-disable indent */
 import React, { Component } from 'react';
 import Navbar from '../components/Navbar';
 import history from '../routes/history';
-// import bigCandy from '../assets/static/bigCandy.png';
-// import littleCandy from '../assets/static/littleCandy.png';
 import blueCar from '../assets/static/blue-car.png';
 import '../assets/styles/containers/ProductDescription.scss';
 
@@ -17,6 +14,7 @@ class ProductDescription extends Component {
       error: '',
       isLoading: false,
     };
+    this.addToCart = this.addToCart.bind(this);
   }
 
   componentWillMount() {
@@ -43,32 +41,36 @@ class ProductDescription extends Component {
       const array = JSON.parse(local);
       const descLocal = localStorage.getItem('candyDataBase');
       const desc = JSON.parse(descLocal);
-      const { _id, images, name, price } = desc;
+      const { _id, data: { images, name, price } } = desc;
       const parsed = array.filter((item) => {
         return item._id !== _id;
       });
       const document = {};
+      const data = {};
       document['_id'] = _id;
-      document['images'] = images[0].img;
-      document['name'] = name;
-      document['price'] = price;
-      document['count'] = 0;
+      document['data'] = data;
+      data['images'] = images[0].img;
+      data['name'] = name;
+      data['price'] = price;
+      data['count'] = 0;
       parsed.push(document);
       const string = JSON.stringify(parsed);
       localStorage.setItem('shoppingCart', string);
     } else {
       const descLocal = localStorage.getItem('candyDataBase');
       const desc = JSON.parse(descLocal);
-      const { _id, images, name, price } = desc;
-      const data = [];
+      const { _id, data: { images, name, price } } = desc;
+      const info = [];
       const document = {};
+      const data = {};
       document['_id'] = _id;
-      document['images'] = images[0].img;
-      document['name'] = name;
-      document['price'] = price;
-      document['count'] = 0;
-      data.push(document);
-      const string = JSON.stringify(data);
+      document['data'] = data;
+      data['images'] = images[0].img;
+      data['name'] = name;
+      data['price'] = price;
+      data['count'] = 0;
+      info.push(document);
+      const string = JSON.stringify(info);
       localStorage.setItem('shoppingCart', string);
     }
     history.push('/shoppingCart');
@@ -76,7 +78,8 @@ class ProductDescription extends Component {
 
   render() {
     const { product, error, isLoading } = this.state;
-    const { images, name, description, price } = product;
+    const { data } = product;
+    const { images, name, description, price } = data;
     if (isLoading) {
       return <p>Loading...</p>;
     }
@@ -116,7 +119,7 @@ class ProductDescription extends Component {
                   <h6>Precio de cada uno</h6>
                 </div>
                 <div id='6' className='col-6'>
-                  <img src={blueCar} alt='car' style={{ 'cursor': 'pointer' }} onClick={this.addToCart.bind(this)} />
+                  <img src={blueCar} alt='car' style={{ 'cursor': 'pointer' }} onClick={this.addToCart} />
                   <h6>Añadir al carrito de compra</h6>
                 </div>
               </div>

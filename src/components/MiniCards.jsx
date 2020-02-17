@@ -1,5 +1,4 @@
 import React from 'react';
-// import candy from '../assets/static/miniCardCandy.png';
 import '../assets/styles/components/MiniCards.scss';
 
 function MiniCards({ image, name, total }) {

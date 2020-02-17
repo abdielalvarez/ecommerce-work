@@ -1,3 +1,4 @@
+/* eslint-disable radix */
 import React, { Component } from 'react';
 import { Modal, ModalHeader, ModalBody } from 'reactstrap';
 import { Link } from 'react-router-dom';
@@ -47,18 +48,19 @@ class ShoppingCart extends Component {
   subtotal = () => {
     const local = localStorage.getItem('shoppingCart');
     const parsed = JSON.parse(local);
-    const mapped = parsed.map((item) => {
-      if (item.total === undefined) {
+    const mapped = parsed.map(({ data }) => {
+      if (data.total === undefined) {
         return 0;
       }
-      return item.total;
+      return data.total;
     });
     const reduced = mapped.reduce((acc, cur) => {
-      const sum = acc + cur;
+      const numAcc = Number(acc);
+      const numCur = Number(cur);
+      const sum = numAcc + numCur;
       return sum;
     });
-    const int = reduced.toFixed(2);
-    return int;
+    return reduced;
   };
 
   render() {
@@ -87,9 +89,9 @@ class ShoppingCart extends Component {
             </div>
           ) :
             <></>}
-          {localStorage.getItem('shoppingCart') ? parsed.map((data) => {
-            const { images, name, price, _id, count, id } = data;
-            return <HorizontalCards images={images} name={name} price={price} _id={_id} counter={count} key={id} />;
+          {localStorage.getItem('shoppingCart') ? parsed.map(({ _id, data }) => {
+            const { images, name, price, count } = data;
+            return <HorizontalCards images={images} name={name} price={price} id={_id} counter={count} key={_id} />;
           }) : <h1 className='text-center'>No hay nada en tu carrito</h1>}
           {localStorage.getItem('shoppingCart') === '[]' ? <h1 className='text-center'>No hay nada en tu carrito</h1> : null}
           {!localStorage.getItem('shoppingCart') ? (

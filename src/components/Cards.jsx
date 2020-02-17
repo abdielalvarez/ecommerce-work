@@ -1,6 +1,6 @@
 import React from 'react';
-import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { firestore } from '../config/Fire';
 // import history from '../routes/history';
 // import Counter from './Counter';
 import blueCar from '../assets/static/blue-car.png';
@@ -8,21 +8,28 @@ import '../assets/styles/components/Cards.scss';
 
 const Cards = ({ product, id }) => {
   const { name, price, images } = product;
-  const str = String(id);
   const handleSubmit = (e) => {
-    axios.get(`http://localhost:3000/api/candy/${str}`, {
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-      },
-    })
-      .then((res) => {
-        const info = res.data.data;
-        const string = JSON.stringify(info);
+    firestore.collection('candies').doc(id).get()
+      .then((snapShots) => {
+        const info = { _id: snapShots.id, data: snapShots.data() };
         localStorage.removeItem('candyDataBase');
-        localStorage.setItem('candyDataBase', string);
-        location.reload();
-      })
-      .catch((err) => console.log(err));
+        const str = JSON.stringify(info);
+        localStorage.setItem('candyDataBase', str);
+        window.location.reload();
+      });
+    // axios.get(`http://localhost:3000/api/candy/${str}`, {
+    //   headers: {
+    //     'Access-Control-Allow-Origin': '*',
+    //   },
+    // })
+    //   .then((res) => {
+    //     const info = res.data.data;
+    //     const string = JSON.stringify(info);
+    //     localStorage.removeItem('candyDataBase');
+    //     localStorage.setItem('candyDataBase', string);
+    //     window.location.reload();
+    //   })
+    //   .catch((err) => console.log(err));
   };
 
   function AddToCart() {
@@ -30,28 +37,32 @@ const Cards = ({ product, id }) => {
       const local = localStorage.getItem('shoppingCart');
       const array = JSON.parse(local);
       const parsed = array.filter((item) => {
-        return item.id !== id;
+        return item._id !== id;
       });
       const document = {};
-      document['id'] = id;
-      document['images'] = images[0].img;
-      document['name'] = name;
-      document['price'] = price;
-      document['count'] = 0;
+      const data = {};
+      document['_id'] = id;
+      document['data'] = data;
+      data['images'] = images[0].img;
+      data['name'] = name;
+      data['price'] = price;
+      data['count'] = 0;
       parsed.push(document);
-      const string = JSON.stringify(parsed);
-      localStorage.setItem('shoppingCart', string);
+      const str = JSON.stringify(parsed);
+      localStorage.setItem('shoppingCart', str);
     } else {
-      const data = [];
+      const info = [];
       const document = {};
-      document['id'] = id;
-      document['images'] = images[0].img;
-      document['name'] = name;
-      document['price'] = price;
-      document['count'] = 0;
-      data.push(document);
-      const string = JSON.stringify(data);
-      localStorage.setItem('shoppingCart', string);
+      const data = {};
+      document['_id'] = id;
+      document['data'] = data;
+      data['images'] = images[0].img;
+      data['name'] = name;
+      data['price'] = price;
+      data['count'] = 0;
+      info.push(document);
+      const str = JSON.stringify(info);
+      localStorage.setItem('shoppingCart', str);
     }
   }
 

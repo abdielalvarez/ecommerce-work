@@ -2,8 +2,6 @@
 import React, { Component } from 'react';
 import { Modal, ModalHeader, ModalBody } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
-import Swal from 'sweetalert2';
 import { firebase } from '../config/Fire';
 import history from '../routes/history';
 import MiniCards from '../components/MiniCards';
@@ -33,20 +31,32 @@ class ShippingAndPayment extends Component {
       email: '',
       password: '',
       samePassword: '',
+      shipping: '',
+      paymentMethod: '',
     };
+    this.toggleSignIn = this.toggleSignIn.bind(this);
+    this.toggleSignUp = this.toggleSignUp.bind(this);
     this.handleCheck = this.handleCheck.bind(this);
     this.showList = this.showList.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.registerHandleSubmit = this.registerHandleSubmit.bind(this);
     this.goWithoutLogin = this.goWithoutLogin.bind(this);
     this.authListener = this.authListener.bind(this);
     this.login = this.login.bind(this);
-    this.logout = this.logout.bind(this);
     this.signup = this.signup.bind(this);
+    this.right = this.right.bind(this);
+    this.wrong = this.wrong.bind(this);
   }
 
   componentDidMount() {
     this.authListener();
+  }
+
+  right = () => {
+    history.push('/right');
+  }
+
+  wrong = () => {
+    history.push('/wrong');
   }
 
   authListener() {
@@ -66,11 +76,10 @@ class ShippingAndPayment extends Component {
     e.preventDefault();
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then((u) => {
-        console.log(u);
-        window.location.reload();
+        this.right();
       })
-      .catch((err) => {
-        console.log(err);
+      .catch(() => {
+        this.wrong();
       });
   }
 
@@ -79,11 +88,10 @@ class ShippingAndPayment extends Component {
     e.preventDefault();
     firebase.auth().createUserWithEmailAndPassword(email, password)
       .then((u) => {
-        console.log(u);
-        window.location.reload();
+        this.right();
       })
-      .catch((err) => {
-        console.log(err);
+      .catch(() => {
+        this.wrong();
       });
   }
 
@@ -107,97 +115,6 @@ class ShippingAndPayment extends Component {
     });
   }
 
-  registerHandleSubmit = (e) => {
-    delete this.state.signInIsOpen;
-    delete this.state.signUpIsOpen;
-    if (this.state.password !== this.state.samePassword) {
-      e.preventDefault();
-      throw new Error(
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'Asegúrate de escribir la misma contraseña las 2 veces solicitadas',
-        }),
-        this.setState({
-          signUpIsOpen: true,
-        }),
-      );
-    }
-    delete this.state.samePassword;
-
-    axios.post(
-      'http://localhost:3000/api/auth/sign-up',
-      this.state,
-    )
-      .then((res) => {
-        const id = res.data.data;
-        const correo = this.state.email;
-        const obj = {};
-        obj['id'] = id;
-        obj['email'] = correo;
-        const str = JSON.stringify(obj);
-        localStorage.setItem('user', str);
-        Swal.fire({
-          icon: 'success',
-          title: 'Excelente',
-          text: `${this.state.name}, has creado exitosamente tu cuenta de Beauty Box`,
-        });
-
-      })
-      .catch(() => {
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'Lo lamentamos, ese usuario ya existe o hay problemas con nuestro servidor, inténtelo más tarde',
-        });
-        this.setState({
-          signUpIsOpen: true,
-        });
-      });
-    e.preventDefault();
-  }
-
-  loginHandleSubmit = (e) => {
-    delete this.state.name;
-    delete this.state.lastName;
-    delete this.state.signInIsOpen;
-    delete this.state.signUpIsOpen;
-    delete this.state.samePassword;
-    this.state['apiKeyToken'] = '66de985b5718ba69226b041c28bcf706964756db41a98640da6c838e7043aba3';
-    const { email, password, apiKeyToken } = this.state;
-    const token = Buffer.from(`${email}:${password}`, 'utf-8').toString('base64');
-    axios({
-      method: 'post',
-      url: 'http://localhost:3000/api/auth/sign-in',
-      data: {
-        apiKeyToken,
-      },
-      headers: {
-        'Authorization': `basic ${token}`,
-      },
-    })
-      .then((data) => {
-        const str = JSON.stringify(data.data.user);
-        localStorage.setItem('user', str);
-        this.setState({
-          isLogin: true,
-        });
-        Swal.fire({
-          icon: 'success',
-          title: 'Excelente',
-          text: 'Has iniciado tu sesión exitosamente',
-        });
-      })
-      .catch(() => {
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'Lo lamentamos hubo un error con su usuario o contraseña, vuelva a intentarlo',
-        });
-      });
-    history.push('/right');
-  }
-
   goWithoutLogin = () => {
     history.push('/right');
   }
@@ -205,15 +122,16 @@ class ShippingAndPayment extends Component {
   subtotal = () => {
     const local = localStorage.getItem('shoppingCart');
     const parsed = JSON.parse(local);
-    const mapped = parsed.map((item) => {
-      return item.total;
+    const mapped = parsed.map(({ data }) => {
+      return data.total;
     });
     const reduced = mapped.reduce((acc, cur) => {
-      const sum = acc + cur;
+      const numAcc = Number(acc);
+      const numCur = Number(cur);
+      const sum = numAcc + numCur;
       return sum;
     });
-    const int = reduced.toFixed(2);
-    return int;
+    return reduced;
   };
 
   taxes = () => {
@@ -333,6 +251,9 @@ class ShippingAndPayment extends Component {
               </div>
               <div className='container mt-3 mb-3'>
                 <h4 className='mb-4'>Envío por medio de:</h4>
+                {!this.state.shipping ?
+                  <p className='text-danger'>Ingresa algún método de envío</p> :
+                  null}
                 <div className='form-check form-check-inline mb-3'>
                   <input
                     className='form-check-input'
@@ -364,6 +285,9 @@ class ShippingAndPayment extends Component {
               </div>
               <div className='container mt-3 mb-3'>
                 <h4 className='mb-4'>Método de pago:</h4>
+                {!this.state.paymentMethod ?
+                  <p className='text-danger'>Ingresa algún método de pago</p> :
+                  null}
                 <div className='form-check form-check-inline mb-3'>
                   <input
                     className='form-check-input'
@@ -425,9 +349,9 @@ class ShippingAndPayment extends Component {
               {!this.state.show ? <></> : (
                 <div className='container mt-5'>
                   <ul className='list-group'>
-                    {parsed.map((item) => {
-                      const { images, name, total } = item;
-                      return <MiniCards image={images} name={name} total={total} />;
+                    {parsed.map(({ _id, data }) => {
+                      const { images, name, total } = data;
+                      return <MiniCards image={images} name={name} total={total} key={_id} />;
                     })}
                   </ul>
                   {this.state.estafeta ? (
@@ -471,7 +395,7 @@ class ShippingAndPayment extends Component {
                 <button
                   type='submit'
                   className='forward rounded-pill hover'
-                  onClick={this.toggleSignIn.bind(this)}
+                  onClick={this.toggleSignIn}
                 >
                     Complete su compra
                 </button>
@@ -490,9 +414,9 @@ class ShippingAndPayment extends Component {
 
         {/* MODAL FOR LOGIN */}
 
-        <Modal isOpen={this.state.signInIsOpen} toggle={this.toggleSignIn.bind(this)}>
+        <Modal isOpen={this.state.signInIsOpen} toggle={this.toggleSignIn}>
           {/* <Modal isOpen='true' toggle={this.toggleSignIn.bind(this)}> */}
-          <ModalHeader toggle={this.toggleSignIn.bind(this)}>
+          <ModalHeader toggle={this.toggleSignIn}>
             <div className='container'>
               <h3>Inicia sesión</h3>
               <small className='text-muted'>Ingresa tu correo y contraseña para iniciar sesión</small>
@@ -529,7 +453,7 @@ class ShippingAndPayment extends Component {
                   id='sign-in'
                   type='submit'
                   className='btn btn-block'
-                  onClick={this.toggleSignIn.bind(this)}
+                  onClick={this.toggleSignIn}
                 >
                       INICIAR SESIÓN
                 </button>
@@ -537,7 +461,7 @@ class ShippingAndPayment extends Component {
                 <small id='link-sign-up' className='form-text text-muted'>
                   ¿Aún no tienes cuenta?
                   {' '}
-                  <a href='#' onClick={this.toggleSignUp.bind(this)}>Regístrate</a>
+                  <a href='#' onClick={this.toggleSignUp}>Regístrate</a>
                   {' '}
                 </small>
               </form>
@@ -547,8 +471,8 @@ class ShippingAndPayment extends Component {
 
         {/* MODAL FOR SIGN UP */}
 
-        <Modal isOpen={this.state.signUpIsOpen} toggle={this.toggleSignUp.bind(this)}>
-          <ModalHeader toggle={this.toggleSignUp.bind(this)}>
+        <Modal isOpen={this.state.signUpIsOpen} toggle={this.toggleSignUp}>
+          <ModalHeader toggle={this.toggleSignUp}>
             <div className='container'>
               <h3>Crea tu cuenta en Beauty Box</h3>
               <small className='text-muted'>Llena los datos solicitados para crear tu cuenta en Beauty Box</small>
@@ -613,14 +537,14 @@ class ShippingAndPayment extends Component {
                   id='sign-in'
                   type='submit'
                   className='btn btn-block'
-                  onClick={this.toggleSignUp.bind(this)}
+                  onClick={this.toggleSignUp}
                 >
                     CREAR CUENTA
                 </button>
                 <small id='link-sign-up' className='form-text text-muted'>
 ¿Ya tienes cuenta?
                   {' '}
-                  <a href='#' onClick={this.toggleSignIn.bind(this)}>Inicia sesión</a>
+                  <a href='#' onClick={this.toggleSignIn}>Inicia sesión</a>
                   {' '}
                 </small>
               </form>
