@@ -1,3 +1,9 @@
+# JSONs
+src/seeds/serviceAccount.json
+src/seeds/candies.json
+serviceAccount.json
+candies.json
+
 # Logs
 logs
 *.log
